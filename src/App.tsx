@@ -1,6 +1,6 @@
 import './css/app.less'
 
-import {faCode, faTools} from "@fortawesome/free-solid-svg-icons";
+import {faClock, faCode, faTools} from "@fortawesome/free-solid-svg-icons";
 import {
 	faCss,
 	faGithub,
@@ -64,6 +64,7 @@ function App() {
 						<IconLink icon={faTwitch} title={'Twitch'} url={'https://twitch.tv/mxgic1337_'}/>
 						<IconLink icon={faYoutube} title={'YouTube'} url={'https://youtube.com/@mxgic1337_'}/>
 						<IconLink icon={faGithub} title={'GitHub'} url={'https://github.com/mxgic1337'}/>
+						<IconLink icon={faClock} title={'WakaTime'} url={'https://wakatime.com/@mxgic1337'}/>
 					</div>
 				</div>
 			</div>

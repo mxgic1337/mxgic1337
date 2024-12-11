@@ -27,7 +27,7 @@
 	height: @size;
 	color: var(--accent);
 	padding: 8px;
-	background: var(--base);
+	background: var(--mantle);
 	margin: 3px;
 
 	svg {
@@ -74,7 +74,6 @@ select {
 main {
 	padding: 24px;
 	border-radius: 10px;
-	animation: .5s main-in;
 
 	width: 65%;
 
@@ -206,12 +205,14 @@ main {
 					margin-right: 6px;
 				}
 
-				transition: .2s;
-				cursor: pointer;
-
-				&:hover {
-					border-color: var(--accent);
+				.full-name:hover {
+					text-decoration: underline;
+					color: var(--accent-hover);
+					cursor: pointer;
 				}
+
+				transition: .2s;
+				animation: .5s repo-in;
 			}
 		}
 	}
@@ -244,7 +245,7 @@ footer:hover {
 	}
 }
 
-@keyframes main-in {
+@keyframes repo-in {
 	0% {
 		translate: 0 -10%;
 		opacity: 0;

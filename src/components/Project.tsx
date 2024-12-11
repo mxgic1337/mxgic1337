@@ -25,19 +25,23 @@ export const Project = ({author, type, url, name, description, languages, urls}:
 		} else return faGlobeAmericas;
 	}
 
-	return <div className={'project'} onClick={() => {
-		if (type === "github") {
-			window.open(`https://github.com/${author}/${name}`);
-		} else {
-			window.open(url);
-		}
-	}}>
-		<p className={'title'}><FontAwesomeIcon icon={faBookBookmark}/> <span className={'author'}>{author} /</span> <span
-			className={'name'}>{name}</span></p>
+	return <div className={'project'}>
+		<p className={'title'}><FontAwesomeIcon icon={faBookBookmark}/>
+			<span onClick={() => {
+				if (type === "github") {
+					window.open(`https://github.com/${author}/${name}`);
+				} else {
+					window.open(url);
+				}
+			}} className={'full-name'}>
+				<span className={'author'}>{author} /</span>
+				<span className={'name'}> {name}</span>
+			</span>
+		</p>
 		<p className={'description'}>{description}</p>
 		<div style={{display: 'flex'}}>
 			{languages.map(language => {
-				return <IconLink icon={languageIcons[language] || faCode} title={language} />
+				return <IconLink icon={languageIcons[language] || faCode} title={language}/>
 			})}
 			{urls.length !== 0 && <>
 				<hr/>
