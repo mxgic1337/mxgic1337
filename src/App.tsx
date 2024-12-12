@@ -31,10 +31,11 @@ function App() {
 	const [flavor, setFlavor] = useState<Flavor>(localStorage.getItem('flavor') as Flavor || 'mocha')
 	const [projects, setProjects] = useState<{
 		author: string,
-		type: 'github' | 'website',
-		name: string,
+		badge?: string,
 		description?: string,
 		languages: string[],
+		name: string,
+		type: 'github' | 'website',
 		urls: { text: string, url: string }[]
 	}[]>([])
 
@@ -83,7 +84,7 @@ function App() {
 				<div className={'projects'}>
 					{projects.map((project) => {
 						return <Project author={project.author} type={project.type} name={project.name}
-														description={project.description} urls={project.urls} languages={project.languages}/>
+														description={project.description} urls={project.urls} languages={project.languages} badge={project.badge}/>
 					})}
 				</div>
 			</section>

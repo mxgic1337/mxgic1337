@@ -4,13 +4,14 @@ import {IconLink} from "./IconLink.tsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {languageIcons} from "../utils/language_icons.ts";
 
-export const Project = ({author, type, url, name, description, languages, urls}: {
+export const Project = ({author, type, url, name, description, badge, languages, urls}: {
 	author: string,
-	type: string,
-	url?: string,
-	name: string,
+	badge?: string,
 	description?: string,
 	languages: string[],
+	name: string,
+	type: string,
+	url?: string,
 	urls: { text: string, url: string }[],
 }) => {
 	function getIcon(url: string): IconDefinition {
@@ -39,16 +40,19 @@ export const Project = ({author, type, url, name, description, languages, urls}:
 			</span>
 		</p>
 		<p className={'description'}>{description}</p>
-		<div style={{display: 'flex'}}>
-			{languages.map(language => {
-				return <IconLink icon={languageIcons[language] || faCode} title={language}/>
-			})}
-			{urls.length !== 0 && <>
-				<hr/>
-				{urls.map(url => {
-					return <IconLink icon={getIcon(url.url)} title={url.text} url={url.url}/>
+		<div className={'badges'}>
+			<div style={{display: 'flex'}}>
+				{languages.map(language => {
+					return <IconLink icon={languageIcons[language] || faCode} title={language}/>
 				})}
-			</>}
+				{urls.length !== 0 && <>
+					<hr/>
+					{urls.map(url => {
+						return <IconLink icon={getIcon(url.url)} title={url.text} url={url.url}/>
+					})}
+				</>}
+			</div>
+			{badge && <img alt={'Wakatime'} src={`${badge}?style=flat-square`}/>}
 		</div>
 	</div>
 }
