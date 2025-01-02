@@ -87,21 +87,21 @@ function App() {
 					})}
 				</div>
 			</section>
+			<footer>
+				<p style={{fontWeight: 'bold'}}>&copy; 2024 mxgic1337_</p>
+				<p>Icons by <a target={'_blank'} href={"https://fontawesome.com"}>Font Awesome</a>.</p>
+				<p>Uses <a target={'_blank'} href={"https://catppuccin.com"}>Catppuccin</a> color scheme.</p>
+				<div className={'theme-switcher'}>
+					<select className={'theme'} value={flavor} onChange={(e) => {
+						setFlavor(e.currentTarget.value as Flavor)
+					}}>
+						{flavors.map((flavor) => {
+							return <option value={flavor.className}>{flavor.name}</option>
+						})}
+					</select>
+				</div>
+			</footer>
 		</main>
-		<footer>
-			<p style={{fontWeight: 'bold'}}>&copy; 2024 mxgic1337_</p>
-			<p>Icons by <a target={'_blank'} href={"https://fontawesome.com"}>Font Awesome</a>.</p>
-			<p>Uses <a target={'_blank'} href={"https://catppuccin.com"}>Catppuccin</a> color scheme.</p>
-			<div className={'theme-switcher'}>
-				<select className={'theme'} value={flavor} onChange={(e) => {
-					setFlavor(e.currentTarget.value as Flavor)
-				}}>
-					{flavors.map((flavor) => {
-						return <option value={flavor.className}>{flavor.name}</option>
-					})}
-				</select>
-			</div>
-		</footer>
 	</>
 }
 

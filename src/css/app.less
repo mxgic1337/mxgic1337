@@ -218,6 +218,33 @@ main {
 	}
 }
 
+@media only screen and (max-width: 900px) {
+	main {
+		width: 100%;
+		padding: 12px 24px;
+	}
+
+	.projects {
+		display: flex !important;
+		flex-direction: column !important;
+
+		.project {
+			margin-bottom: 0 !important;
+		}
+	}
+
+	footer {
+		margin-top: 24px !important;
+		text-align: center;
+		position: relative !important;
+		display: flex;
+		flex-direction: column;
+		select {
+			max-width: 250px;
+		}
+	}
+}
+
 a {
 	color: var(--accent);
 	text-decoration: none;
