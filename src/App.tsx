@@ -1,23 +1,20 @@
 import './css/app.less'
 
-import {faClock, faCode, faTools} from "@fortawesome/free-solid-svg-icons";
-import {
-	faCss,
-	faGithub,
-	faJava,
-	faJs,
-	faLess,
-	faNodeJs,
-	faReact,
-	faSass,
-	faTwitch,
-	faYoutube
-} from "@fortawesome/free-brands-svg-icons";
 import {IconLink} from "./components/IconLink.tsx";
 import {SectionTitle} from "./components/SectionTitle.tsx";
 import {useEffect, useLayoutEffect, useState} from "react";
 import {Project} from "./components/Project.tsx";
 import {Language} from "./components/Language.tsx";
+import {
+	SiCss3,
+	SiGithub,
+	SiLess, SiNodedotjs,
+	SiOpenjdk, SiReact,
+	SiSass,
+	SiTwitch,
+	SiTypescript, SiVscodium, SiWakatime,
+	SiYoutube
+} from "@icons-pack/react-simple-icons";
 
 type Flavor = 'latte' | 'frappe' | 'macchiato' | 'mocha'
 const flavors = [
@@ -62,25 +59,25 @@ function App() {
 				<div>
 					<h1>mxgic1337_</h1>
 					<div className={'socials'}>
-						<IconLink icon={faTwitch} title={'Twitch'} url={'https://twitch.tv/mxgic1337_'}/>
-						<IconLink icon={faYoutube} title={'YouTube'} url={'https://youtube.com/@mxgic1337_'}/>
-						<IconLink icon={faGithub} title={'GitHub'} url={'https://github.com/mxgic1337'}/>
-						<IconLink icon={faClock} title={'WakaTime'} url={'https://wakatime.com/@mxgic1337'}/>
+						<IconLink icon={<SiTwitch />} title={'Twitch'} url={'https://twitch.tv/mxgic1337_'}/>
+						<IconLink icon={<SiYoutube />} title={'YouTube'} url={'https://youtube.com/@mxgic1337_'}/>
+						<IconLink icon={<SiGithub />} title={'GitHub'} url={'https://github.com/mxgic1337'}/>
+						<IconLink icon={<SiWakatime />} title={'WakaTime'} url={'https://wakatime.com/@mxgic1337'}/>
 					</div>
 				</div>
 			</div>
 			<section>
-				<SectionTitle icon={faCode} text={'I code in:'}/>
+				<SectionTitle text={'I code in:'} icon={<SiVscodium />}/>
 				<div className={'languages'}>
-					<Language icon={faJs} text={'TypeScript'}
-										libraries={[{icon: faNodeJs, text: 'NodeJS'}, {icon: faReact, text: 'React'}]}/>
-					<Language icon={faJava} text={'Java'}/>
-					<Language icon={faCss} text={'CSS'}
-										libraries={[{icon: faLess, text: 'Less'}, {icon: faSass, text: 'Sass'}]}/>
+					<Language icon={<SiTypescript />} text={'TypeScript'}
+										libraries={[{icon: <SiNodedotjs />, text: 'NodeJS'}, {icon: <SiReact />, text: 'React'}]}/>
+					<Language icon={<SiOpenjdk />} text={'Java'}/>
+					<Language icon={<SiCss3 />} text={'CSS'}
+										libraries={[{icon: <SiLess />, text: 'Less'}, {icon: <SiSass />, text: 'Sass'}]}/>
 				</div>
 			</section>
 			<section>
-				<SectionTitle icon={faTools} text={'Projects / I work on:'}/>
+				<SectionTitle text={'Projects / I work on:'} icon={<SiGithub />}/>
 				<div className={'projects'}>
 					{projects.map((project) => {
 						return <Project author={project.author} type={project.type} name={project.name}
@@ -89,8 +86,8 @@ function App() {
 				</div>
 			</section>
 			<footer>
-				<p style={{fontWeight: 'bold'}}>&copy; 2024 mxgic1337_</p>
-				<p>Icons by <a target={'_blank'} href={"https://fontawesome.com"}>Font Awesome</a>.</p>
+				<p style={{fontWeight: 'bold'}}>&copy; 2024-2025 mxgic1337_</p>
+				<p>Icons by <a target={'_blank'} href={"https://simpleicons.org"}>Simple Icons</a>.</p>
 				<p>Uses <a target={'_blank'} href={"https://catppuccin.com"}>Catppuccin</a> color scheme.</p>
 				<div className={'theme-switcher'}>
 					<select className={'theme'} value={flavor} onChange={(e) => {

@@ -113,8 +113,12 @@ main {
 			min-width: 350px;
 
 			svg {
+				position: relative;
+				top: 2px;
+				width: 1em;
+				height: 1em;
 				text-align: left;
-				width: 22px;
+				margin-right: 4px;
 			}
 
 			hr {
@@ -160,7 +164,8 @@ main {
 		.projects {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			grid-gap: 6px;
+			grid-column-gap: 6px;
+			grid-row-gap: 0;
 
 			.project {
 				padding: 16px 20px;
@@ -169,10 +174,15 @@ main {
 				border-radius: 12px;
 				display: flex;
 				flex-direction: column;
-				margin: 6px 0;
+				margin-top: 6px;
 
 				.title {
-					.fa-book-bookmark {
+					display: flex;
+					align-items: center;
+
+					svg {
+						width: 1em;
+						height: 1em;
 						color: var(--color);
 						margin-right: 6px;
 					}

@@ -1,9 +1,9 @@
-import {IconDefinition} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {ReactElement} from "react";
+import {IconType} from "@icons-pack/react-simple-icons";
 
-export const SectionTitle = ({icon, text}: { icon: IconDefinition, text: string }) => {
+export const SectionTitle = ({text, icon}: { text: string, icon?: ReactElement<IconType> }) => {
 	return <div className={'section-title'}>
-		<p><FontAwesomeIcon icon={icon}/> {text}</p>
+		<p>{icon} {text}</p>
 		<hr/>
 	</div>
 }
