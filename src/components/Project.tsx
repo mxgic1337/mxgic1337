@@ -1,8 +1,15 @@
-import {faBookBookmark, faCode, faGlobeAmericas, IconDefinition} from "@fortawesome/free-solid-svg-icons";
-import {faDiscord, faGithub, faTwitch, faYoutube} from "@fortawesome/free-brands-svg-icons";
 import {IconLink} from "./IconLink.tsx";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {languageIcons} from "../utils/language_icons.ts";
+import {languageIcons} from "../utils/language_icons.tsx";
+import {
+	IconType,
+	SiDiscord,
+	SiFirefox,
+	SiGithub, SiGooglechrome,
+	SiJetbrains,
+	SiTwitch,
+	SiYoutube
+} from "@icons-pack/react-simple-icons";
+import {ReactElement} from "react";
 
 export const Project = ({author, type, url, name, description, badge, languages, urls}: {
 	author: string,
@@ -14,20 +21,22 @@ export const Project = ({author, type, url, name, description, badge, languages,
 	url?: string,
 	urls: { text: string, url: string }[],
 }) => {
-	function getIcon(url: string): IconDefinition {
+	function getIcon(url: string, title?: string): ReactElement<IconType> {
 		if (url.startsWith("https://github.com")) {
-			return faGithub
+			return <SiGithub title={title} />
 		} else if (url.startsWith("https://youtube.com") || url.startsWith("https://youtube.com")) {
-			return faYoutube
+			return <SiYoutube title={title} />
 		} else if (url.startsWith("https://discord.com") || url.startsWith("https://discord.gg")) {
-			return faDiscord
+			return <SiDiscord title={title} />
 		} else if (url.startsWith("https://twitch.tv")) {
-			return faTwitch
-		} else return faGlobeAmericas;
+			return <SiTwitch title={title} />
+		} else if (url.startsWith("https://addons.mozilla.org")) {
+			return <SiFirefox title={title} />
+		} else return <SiGooglechrome title={title} />;
 	}
 
 	return <div className={'project'}>
-		<p className={'title'}><FontAwesomeIcon icon={faBookBookmark}/>
+		<p className={'title'}><SiGithub />
 			<span onClick={() => {
 				if (type === "github") {
 					window.open(`https://github.com/${author}/${name}`);
@@ -43,12 +52,12 @@ export const Project = ({author, type, url, name, description, badge, languages,
 		<div className={'badges'}>
 			<div style={{display: 'flex'}}>
 				{languages.map(language => {
-					return <IconLink icon={languageIcons[language] || faCode} title={language}/>
+					return <IconLink icon={languageIcons[language] || <SiJetbrains />} title={language}/>
 				})}
 				{urls.length !== 0 && <>
 					<hr/>
 					{urls.map(url => {
-						return <IconLink icon={getIcon(url.url)} title={url.text} url={url.url}/>
+						return <IconLink icon={getIcon(url.url, url.text)} title={url.text} url={url.url}/>
 					})}
 				</>}
 			</div>
