@@ -87,6 +87,7 @@ function App() {
 			</section>
 			<footer>
 				<p style={{fontWeight: 'bold'}}>&copy; 2024-2025 mxgic1337_</p>
+				<p><a target={'_blank'} href={"https://github.com/mxgic1337/mxgic1337.xyz"}>Source code</a></p>
 				<p>Icons by <a target={'_blank'} href={"https://simpleicons.org"}>Simple Icons</a>.</p>
 				<p>Uses <a target={'_blank'} href={"https://catppuccin.com"}>Catppuccin</a> color scheme.</p>
 				<div className={'theme-switcher'}>
