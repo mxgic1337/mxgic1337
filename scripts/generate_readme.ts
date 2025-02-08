@@ -4,21 +4,36 @@ import projects_json from '../public/projects.json';
 import languages_json from './languages.json';
 import links_json from './links.json';
 
-const ICON_COLORS: { [icon: string]: string } = {
-  twitch: '#cba6f7',
-  youtube: '#f38ba8',
-  typescript: '#89b4fa',
-  vite: '#cba6f7',
-  less: '#74c7ec',
-  react: '#74c7ec',
-  webpack: '#cdd6f4',
-  rust: '#fab387',
-  javascript: '#f9e2af',
-  html: '#fab387',
-  css: '#cba6f7',
-  sass: '#f5c2e7',
-  wakatime: '#a6adc8',
-  github: '#cdd6f4',
+const CATPPUCCIN: {
+  [color: string]: [/** Latte */ string, /** Mocha */ string];
+} = {
+  pink: ['#ea76cb', '#f5c2e7'],
+  mauve: ['#8839ef', '#cba6f7'],
+  red: ['#d20f39', '#f38ba8'],
+  peach: ['#fe640b', '#fab387'],
+  yellow: ['#df8e1d', '#f9e2af'],
+  sky: ['#04a5e5', '#89dceb'],
+  sapphire: ['#209fb5', '#74c7ec'],
+  blue: ['#1e66f5', '#89b4fa'],
+  text: ['#4c4f69', '#cdd6f4'],
+  subtext0: ['#6c6f85', '#a6adc8'],
+};
+
+const ICON_COLORS: { [icon: string]: [string, string] } = {
+  twitch: CATPPUCCIN.mauve,
+  youtube: CATPPUCCIN.red,
+  typescript: CATPPUCCIN.blue,
+  vite: CATPPUCCIN.mauve,
+  less: CATPPUCCIN.sapphire,
+  react: CATPPUCCIN.sapphire,
+  webpack: CATPPUCCIN.text,
+  rust: CATPPUCCIN.peach,
+  javascript: CATPPUCCIN.yellow,
+  html: CATPPUCCIN.peach,
+  css: CATPPUCCIN.mauve,
+  sass: CATPPUCCIN.pink,
+  wakatime: CATPPUCCIN.subtext0,
+  github: CATPPUCCIN.text,
 };
 
 const TEMPLATE_PATH = path.join('./scripts/readme_template.md');
@@ -29,8 +44,9 @@ if (!fs.existsSync(TEMPLATE_PATH)) {
 
 let content = fs.readFileSync(TEMPLATE_PATH).toString();
 
-function getIcon(icon: string, size: number, color?: string) {
-  return `<img height="${size}" width="${size + size * 0.25}" src="https://cdn.simpleicons.org/${icon}/${(color || ICON_COLORS[icon] || '#cdd6f4').substring(1)}" />`;
+function getIcon(icon: string, size: number, color?: [string, string]) {
+  const colors = color || ICON_COLORS[icon] || CATPPUCCIN.text;
+  return `<img height="${size}" width="${size + size * 0.25}" src="https://cdn.simpleicons.org/${icon}/${colors[0].substring(1)}/${colors[1].substring(1)}" />`;
 }
 
 let projects =
