@@ -17,7 +17,7 @@ const ICON_COLORS: { [icon: string]: string } = {
   html: '#fab387',
   css: '#cba6f7',
   sass: '#f5c2e7',
-  wakatime: '#cdd6f4',
+  wakatime: '#a6adc8',
   github: '#cdd6f4',
 };
 
