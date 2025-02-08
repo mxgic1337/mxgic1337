@@ -115,7 +115,7 @@ function App() {
           <p>
             <a
               target={'_blank'}
-              href={'https://github.com/mxgic1337/mxgic1337.xyz'}
+              href={'https://github.com/mxgic1337/mxgic1337'}
             >
               Source code
             </a>
