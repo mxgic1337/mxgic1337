@@ -22,6 +22,20 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
+      - name: Format code
+        run: pnpm format
+      - name: Commit formatting
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github-actions
+          message: 'style: formatted code'
+      - name: Generate README
+        run: pnpm readme:generate
+      - name: Commit generated README
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github-actions
+          message: 'chore(README.md): generated README'
       - name: Build
         run: pnpm run build
       - name: Deploy
