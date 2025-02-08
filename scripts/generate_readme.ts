@@ -44,8 +44,8 @@ if (!fs.existsSync(TEMPLATE_PATH)) {
 
 let content = fs.readFileSync(TEMPLATE_PATH).toString();
 
-function getIcon(icon: string, size: number, color?: string) {
-  const colors = color || ICON_COLORS[icon] || '#cdd6f4';
+function getIcon(icon: string, size: number, color?: [string, string]) {
+  const colors = color || ICON_COLORS[icon] || CATPPUCCIN.text;
   return `<img height="${size}" width="${size + size * 0.25}" src="https://cdn.simpleicons.org/${icon}/${colors[0].substring(1)}/${colors[1].substring(1)}" />`;
 }
 
