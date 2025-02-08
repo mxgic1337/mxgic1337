@@ -3,10 +3,14 @@ import { IconType } from '@icons-pack/react-simple-icons';
 
 export const IconLink = ({
   icon,
+  iconName,
+  accent,
   title,
   url,
 }: {
-  icon: ReactElement<IconType>;
+  icon?: ReactElement<IconType>;
+  iconName?: string;
+  accent?: string;
   title: string;
   url?: string;
 }) => {
@@ -17,7 +21,12 @@ export const IconLink = ({
       href={url}
       target={'_blank'}
     >
-      {icon}
+      {icon && icon}
+      {iconName && (
+        <img
+          src={`https://cdn.simpleicons.org/${iconName}/${accent || 'currentColor'}`}
+        />
+      )}
     </a>
   );
 };

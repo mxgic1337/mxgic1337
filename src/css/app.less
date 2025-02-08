@@ -91,7 +91,7 @@ main {
     display: flex;
     align-items: center;
 
-    img {
+    img.avatar {
       @size: 100px;
       border: 1px solid var(--border);
       border-radius: 50%;
@@ -141,10 +141,23 @@ main {
         justify-content: space-between;
         align-items: center;
 
+        .learning {
+          position: relative;
+          top: 1px;
+          color: var(--accent);
+          background-color: var(--accent-background);
+          font-size: 0.75em;
+          padding: 2px 10px;
+          border-radius: 10px;
+          margin-left: 8px;
+          border: 1px solid var(--accent);
+        }
+
         p {
           display: flex;
           align-items: center;
 
+          img,
           svg {
             @size: 18px;
             width: @size;
