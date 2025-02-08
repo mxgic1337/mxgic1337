@@ -1,5 +1,4 @@
 node_modules
 .gitignore
-package.json
 pnpm-lock.yaml
 README.md
