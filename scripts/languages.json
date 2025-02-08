@@ -1,6 +1,6 @@
 [
-	{"name": "TypeScript", "tools": ["React", "Vite", "JavaScript"]},
-	{"name": "CSS", "tools": ["Less", "Sass"]},
-	{"name": "Java", "icon": "openjdk"},
-	{"name": "Rust", "learning": true}
+  { "name": "TypeScript", "tools": ["React", "Vite", "JavaScript"] },
+  { "name": "CSS", "tools": ["Less", "Sass"] },
+  { "name": "Java", "icon": "openjdk" },
+  { "name": "Rust", "learning": true }
 ]
