@@ -70,7 +70,7 @@ content = content.replaceAll(
 let links: string[] = [];
 for (const link of links_json) {
   links.push(
-    `<a href="${link.url}" title="${link.name}">${getIcon(link.name.toLowerCase(), 32)}</a>`
+    `<a href="${link.url}" title="${link.name}">${getIcon(link.name.toLowerCase(), 26)}</a>`
   );
 }
 
