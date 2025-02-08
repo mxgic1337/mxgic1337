@@ -1,0 +1,53 @@
+[
+  {
+    "name": "userstyles",
+    "author": "catppuccin",
+    "description": "Soothing pastel userstyles",
+    "languages": ["less"],
+    "type": "github",
+    "urls": [
+      {
+        "text": "Catppuccin",
+        "url": "https://catppuccin.com"
+      }
+    ],
+    "badge": "https://wakatime.com/badge/user/3a057790-d695-462e-aada-aa717a266ec9/project/f3a49df7-743f-4205-8074-91608ccb9d5f.svg"
+  },
+  {
+    "name": "faceit-stats-widget",
+    "author": "mxgic1337",
+    "description": "A widget for OBS Studio that displays FACEIT stats.",
+    "languages": ["react", "vite", "less"],
+    "type": "github",
+    "urls": [
+      {
+        "text": "Generator",
+        "url": "https://widget.mxgic1337.xyz/"
+      }
+    ],
+    "badge": "https://wakatime.com/badge/user/3a057790-d695-462e-aada-aa717a266ec9/project/45acda3c-9663-4f18-9cc5-abbf7ebceb29.svg"
+  },
+  {
+    "name": "protonfox",
+    "author": "mxgic1337",
+    "description": "Extension that displays information about game compatibility with Proton on Steam. ",
+    "languages": ["typescript", "webpack", "less"],
+    "type": "github",
+    "urls": [
+      {
+        "text": "Mozilla Add-ons",
+        "url": "https://addons.mozilla.org/en-US/firefox/addon/protonfox-for-steam/"
+      }
+    ],
+    "badge": "https://wakatime.com/badge/user/3a057790-d695-462e-aada-aa717a266ec9/project/84ed40f6-e426-4986-bffd-05bc876bf8da.svg"
+  },
+  {
+    "name": "mxgic1337",
+    "author": "mxgic1337",
+    "description": "Source code of my website :D",
+    "languages": ["typescript", "react", "vite", "less"],
+    "type": "github",
+    "urls": [],
+    "badge": "https://wakatime.com/badge/user/3a057790-d695-462e-aada-aa717a266ec9/project/311c570a-3e0d-4c23-a9c3-a80b7b7d5c53.svg"
+  }
+]
