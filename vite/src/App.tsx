@@ -6,8 +6,8 @@ import { useEffect, useLayoutEffect, useState } from 'react';
 import { Project } from './components/Project.tsx';
 import { Language } from './components/Language.tsx';
 import { SiGithub, SiVscodium } from '@icons-pack/react-simple-icons';
-import languages_json from '../scripts/languages.json';
-import links_json from '../scripts/links.json';
+import languages_json from '../../scripts/languages.json';
+import links_json from '../../scripts/links.json';
 
 type Flavor = 'latte' | 'frappe' | 'macchiato' | 'mocha';
 const flavors = [
