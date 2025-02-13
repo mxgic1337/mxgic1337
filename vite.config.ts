@@ -6,4 +6,7 @@ export default defineConfig({
   plugins: [react()],
   root: 'vite',
   publicDir: '../public',
+  build: {
+    outDir: '../dist',
+  },
 });
