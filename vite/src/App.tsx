@@ -65,7 +65,11 @@ function App() {
     <>
       <main>
         <div className={'profile'}>
-          <img className={'avatar'} src={'/avatar.png'} alt={'Avatar'} />
+          <img
+            className={'avatar'}
+            src={'https://avatars.githubusercontent.com/u/60188749'}
+            alt={'Avatar'}
+          />
           <div>
             <h1>mxgic1337_</h1>
             <div className={'socials'}>
