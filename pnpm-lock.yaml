@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@icons-pack/react-simple-icons':
-        specifier: ^10.2.0
-        version: 10.2.0(react@18.3.1)
       feather-icons-react:
         specifier: ^0.7.1
         version: 0.7.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -401,11 +398,6 @@ packages:
   '@humanwhocodes/retry@0.4.1':
     resolution: {integrity: sha512-c7hNEllBlenFTHBky65mhq8WD2kbN9Q6gk0bTk8lSBvc554jpXSkST1iePudpt7+A/AQvuHs9EMqjHDXMY1lrA==}
     engines: {node: '>=18.18'}
-
-  '@icons-pack/react-simple-icons@10.2.0':
-    resolution: {integrity: sha512-QDUxup8D3GdIIzwGpxQs6bjeFV5mJes25qqf4aqP/PaBYQNCar7AiyD8C14636TosCG0A/QqAUwm/Hviep4d4g==}
-    peerDependencies:
-      react: ^16.13 || ^17 || ^18 || ^19
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1516,10 +1508,6 @@ snapshots:
   '@humanwhocodes/retry@0.3.1': {}
 
   '@humanwhocodes/retry@0.4.1': {}
-
-  '@icons-pack/react-simple-icons@10.2.0(react@18.3.1)':
-    dependencies:
-      react: 18.3.1
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

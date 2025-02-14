@@ -1,13 +1,5 @@
 import { IconLink } from './IconLink.tsx';
 import { languageIconsOverrides } from '../utils/language_icons.tsx';
-import {
-  IconType,
-  SiDiscord,
-  SiFirefox,
-  SiGithub,
-  SiTwitch,
-  SiYoutube,
-} from '@icons-pack/react-simple-icons';
 import { ReactElement } from 'react';
 import FeatherIcon from 'feather-icons-react';
 
@@ -32,26 +24,38 @@ export const Project = ({
   url?: string;
   urls: { text: string; url: string }[];
 }) => {
+  function getIconImgElement(icon: string, title?: string) {
+    return (
+      <img
+        src={`https://cdn.simpleicons.org/${icon}/${accent || 'currentColor'}`}
+        title={title ? title : icon.charAt(0).toUpperCase() + icon.substring(1)}
+      />
+    );
+  }
+
   function getIcon(
     url: string,
     title?: string
-  ): ReactElement<IconType | HTMLSpanElement> {
+  ): ReactElement<HTMLImageElement | HTMLSpanElement> {
     if (url.startsWith('https://github.com')) {
-      return <SiGithub title={title} />;
+      return getIconImgElement('github', title);
     } else if (
       url.startsWith('https://youtube.com') ||
       url.startsWith('https://youtube.com')
     ) {
-      return <SiYoutube title={title} />;
+      return getIconImgElement('youtube', title);
     } else if (
       url.startsWith('https://discord.com') ||
       url.startsWith('https://discord.gg')
     ) {
-      return <SiDiscord title={title} />;
-    } else if (url.startsWith('https://twitch.tv')) {
-      return <SiTwitch title={title} />;
+      return getIconImgElement('discord', title);
+    } else if (
+      url.startsWith('https://twitch.tv') ||
+      url.startsWith('https://subs.twitch.tv')
+    ) {
+      return getIconImgElement('twitch', title);
     } else if (url.startsWith('https://addons.mozilla.org')) {
-      return <SiFirefox title={title} />;
+      return getIconImgElement('firefoxbrowser', title);
     } else
       return (
         <span title={title}>
