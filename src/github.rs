@@ -71,8 +71,13 @@ pub async fn sponsors() -> Json<Vec<Sponsor>> {
 "#;
     let mut headers = HashMap::new();
     let authorization_header = format!("Bearer {}", token);
+    let user_agent_header = format!(
+        "mxgic1337/{}/{} (mxgic1337.xyz)",
+        env!("CARGO_PKG_NAME"),
+        env!("CARGO_PKG_VERSION")
+    );
     headers.insert("Authorization", authorization_header.as_str());
-    headers.insert("User-Agent", "mxgic1337/mxgic1337 2.0.0");
+    headers.insert("User-Agent", user_agent_header.as_str());
     let client = Client::new_with_headers(endpoint, headers);
     let data = client.query::<SponsorData>(query).await.unwrap().unwrap();
     let sponsors = data.user.sponsorshipsAsMaintainer.nodes;
