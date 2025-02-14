@@ -8,7 +8,7 @@ export const IconLink = ({
   title,
   url,
 }: {
-  icon?: ReactElement<IconType>;
+  icon?: ReactElement<HTMLSpanElement | IconType>;
   iconName?: string;
   accent?: string;
   title: string;

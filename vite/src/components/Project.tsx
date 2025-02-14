@@ -5,7 +5,6 @@ import {
   SiDiscord,
   SiFirefox,
   SiGithub,
-  SiGooglechrome,
   SiJetbrains,
   SiTwitch,
   SiYoutube,
