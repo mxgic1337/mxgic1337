@@ -237,3 +237,5 @@ fabric.properties
 # Added by cargo
 
 /target
+
+*.secrets
