@@ -11,6 +11,7 @@ import {
   SiYoutube,
 } from '@icons-pack/react-simple-icons';
 import { ReactElement } from 'react';
+import FeatherIcon from 'feather-icons-react';
 
 export const Project = ({
   author,
@@ -31,7 +32,10 @@ export const Project = ({
   url?: string;
   urls: { text: string; url: string }[];
 }) => {
-  function getIcon(url: string, title?: string): ReactElement<IconType> {
+  function getIcon(
+    url: string,
+    title?: string
+  ): ReactElement<IconType | HTMLSpanElement> {
     if (url.startsWith('https://github.com')) {
       return <SiGithub title={title} />;
     } else if (
@@ -48,13 +52,18 @@ export const Project = ({
       return <SiTwitch title={title} />;
     } else if (url.startsWith('https://addons.mozilla.org')) {
       return <SiFirefox title={title} />;
-    } else return <SiGooglechrome title={title} />;
+    } else
+      return (
+        <span title={title}>
+          <FeatherIcon icon={'globe'} />
+        </span>
+      );
   }
 
   return (
     <div className={'project'}>
       <p className={'title'}>
-        <SiGithub />
+        <FeatherIcon icon={'book'} />
         <span
           onClick={() => {
             if (type === 'github') {

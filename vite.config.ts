@@ -9,4 +9,13 @@ export default defineConfig({
   build: {
     outDir: '../dist',
   },
+  server: {
+    proxy: {
+      /* Redirect to Rust backend */
+      '/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+      },
+    },
+  },
 });

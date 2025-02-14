@@ -1,17 +1,16 @@
-import { ReactElement } from 'react';
-import { IconType } from '@icons-pack/react-simple-icons';
+import FeatherIcon from 'feather-icons-react';
 
 export const SectionTitle = ({
   text,
   icon,
 }: {
   text: string;
-  icon?: ReactElement<IconType>;
+  icon?: string;
 }) => {
   return (
     <div className={'section-title'}>
       <p>
-        {icon} {text}
+        {icon && <FeatherIcon icon={icon} />} {text}
       </p>
       <hr />
     </div>
