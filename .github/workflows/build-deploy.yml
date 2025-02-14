@@ -7,6 +7,7 @@ on:
 jobs:
   format-and-generate-readme:
     name: Format & generate README
+    if: ${{ !github.event.act }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -41,7 +42,7 @@ jobs:
           message: 'chore(README.md): updated README file'
   build:
     name: Build & Deploy
-    needs: format-and-generate-readme
+    #needs: format-and-generate-readme
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -72,9 +73,10 @@ jobs:
         run: pnpm install
       - name: Build (Vite)
         run: pnpm run build 
-      
+
       - name: Prepare Deploy
-        run: ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "cd ~ && mkdir -p mxgic1337.xyz && mkdir -p mxgic1337.xyz/dist"
+        run: ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "cd ~ && mkdir -p mxgic1337.xyz && mkdir -p mxgic1337.xyz/dist && cd ~/mxgic1337.xyz && ./kill.sh"
+
       - name: Deploy (Backend)
         run: scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./target/debug/mxgic1337 ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:~/mxgic1337.xyz 
       - name: Deploy (Vite)

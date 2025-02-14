@@ -239,3 +239,4 @@ fabric.properties
 /target
 
 *.secrets
+event.json
