@@ -42,7 +42,7 @@ jobs:
           message: 'chore(README.md): updated README file'
   build:
     name: Build & Deploy
-    #needs: format-and-generate-readme
+    needs: format-and-generate-readme
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
