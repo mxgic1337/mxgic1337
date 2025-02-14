@@ -1,15 +1,20 @@
 name: Build check
-on:
-  push:
-    branches:
-      - '*'
-      - '*/*'
-      - '**'
-      - '!main'
+on: 
   pull_request:
 
 jobs:
-  build:
+  cargo:
+    name: Cargo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Build
+        run: cargo build
+  vite:
+    name: Vite
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

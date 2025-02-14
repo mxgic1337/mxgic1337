@@ -5,9 +5,9 @@ import { SectionTitle } from './components/SectionTitle.tsx';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { Project } from './components/Project.tsx';
 import { Language } from './components/Language.tsx';
-import { SiGithub, SiVscodium } from '@icons-pack/react-simple-icons';
-import languages_json from '../scripts/languages.json';
-import links_json from '../scripts/links.json';
+import languages_json from '../../scripts/languages.json';
+import links_json from '../../scripts/links.json';
+import { Sponsors } from './components/Sponsors.tsx';
 
 type Flavor = 'latte' | 'frappe' | 'macchiato' | 'mocha';
 const flavors = [
@@ -17,10 +17,17 @@ const flavors = [
   { name: 'Catppuccin Mocha', className: 'mocha', accent: 'cba6f7' },
 ];
 
+export interface Sponsor {
+  username: string;
+  avatar: string;
+  tier: string;
+}
+
 function App() {
   const [flavor, setFlavor] = useState<Flavor>(
     (localStorage.getItem('flavor') as Flavor) || 'mocha'
   );
+  const [sponsors, setSponsors] = useState<Sponsor[]>();
   const [projects, setProjects] = useState<
     {
       author: string;
@@ -39,6 +46,11 @@ function App() {
         setProjects(await response.json());
       }
     });
+    fetch('/api/sponsors').then(async (response) => {
+      if (response.ok) {
+        setSponsors(await response.json());
+      }
+    });
   }, []);
 
   useLayoutEffect(() => {
@@ -53,7 +65,11 @@ function App() {
     <>
       <main>
         <div className={'profile'}>
-          <img className={'avatar'} src={'/avatar.png'} alt={'Avatar'} />
+          <img
+            className={'avatar'}
+            src={'https://avatars.githubusercontent.com/u/60188749'}
+            alt={'Avatar'}
+          />
           <div>
             <h1>mxgic1337_</h1>
             <div className={'socials'}>
@@ -74,7 +90,7 @@ function App() {
           </div>
         </div>
         <section>
-          <SectionTitle text={'Languages:'} icon={<SiVscodium />} />
+          <SectionTitle text={'Languages:'} icon={'code'} />
           <div className={'languages'}>
             {languages_json.map((language) => {
               return (
@@ -93,12 +109,19 @@ function App() {
           </div>
         </section>
         <section>
-          <SectionTitle text={'Projects:'} icon={<SiGithub />} />
+          <SectionTitle text={'Projects:'} icon={'book'} />
+          <p className={'comment'}>
+            {'// Stuff that I work on in my free time'}
+          </p>
           <div className={'projects'}>
             {projects.map((project) => {
               return (
                 <Project
                   author={project.author}
+                  accent={
+                    flavors.find((flavor1) => flavor1.className === flavor)
+                      ?.accent
+                  }
                   type={project.type}
                   name={project.name}
                   description={project.description}
@@ -110,29 +133,26 @@ function App() {
             })}
           </div>
         </section>
+        {sponsors && sponsors.length !== 0 && <Sponsors sponsors={sponsors} />}
         <footer>
           <p style={{ fontWeight: 'bold' }}>&copy; 2024-2025 mxgic1337_</p>
-          <p>
-            <a
-              target={'_blank'}
-              href={'https://github.com/mxgic1337/mxgic1337'}
-            >
-              Source code
-            </a>
-          </p>
-          <p>
-            Icons by{' '}
-            <a target={'_blank'} href={'https://simpleicons.org'}>
-              Simple Icons
-            </a>
-            .
-          </p>
           <p>
             Uses{' '}
             <a target={'_blank'} href={'https://catppuccin.com'}>
               Catppuccin
             </a>{' '}
             color scheme.
+          </p>
+          <p>
+            Icons by{' '}
+            <a target={'_blank'} href={'https://feathericons.com'}>
+              Feather Icons
+            </a>
+            {' & '}
+            <a target={'_blank'} href={'https://simpleicons.org'}>
+              Simple Icons
+            </a>
+            .
           </p>
           <div className={'theme-switcher'}>
             <select

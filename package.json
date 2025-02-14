@@ -1,19 +1,19 @@
 {
   "name": "mxgic1337.xyz",
   "private": true,
-  "version": "1.4.0",
+  "version": "2.0.0",
   "type": "module",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build --emptyOutDir",
     "format": "prettier --write .",
     "readme:generate": "tsx scripts/generate_readme.ts",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@icons-pack/react-simple-icons": "^10.2.0",
+    "feather-icons-react": "^0.7.1",
     "less": "^4.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"

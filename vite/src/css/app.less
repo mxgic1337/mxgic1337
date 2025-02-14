@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 @import 'flavors/mocha';
 @import 'flavors/macchiato';
 @import 'flavors/frappe';
@@ -7,7 +7,7 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Fira Code', sans-serif;
   user-select: none;
 }
 
@@ -57,7 +57,7 @@ body {
 select {
   color: var(--color);
   padding: 8px;
-  background: var(--base);
+  background: var(--mantle);
   margin: 3px;
   border-radius: 10px;
   border: 1px solid var(--border);
@@ -114,13 +114,14 @@ main {
 
       min-width: 350px;
 
-      svg {
+      .feather {
         position: relative;
         top: 2px;
-        width: 1em;
-        height: 1em;
+        @size: 16px;
+        width: @size;
+        height: @size;
         text-align: left;
-        margin-right: 4px;
+        margin-right: 0px;
       }
 
       hr {
@@ -144,13 +145,13 @@ main {
         .learning {
           position: relative;
           top: 1px;
-          color: var(--accent);
-          background-color: var(--accent-background);
+          color: var(--green);
+          background-color: var(--green-background);
           font-size: 0.75em;
           padding: 2px 10px;
           border-radius: 10px;
           margin-left: 8px;
-          border: 1px solid var(--accent);
+          border: 1px solid var(--green);
         }
 
         p {
@@ -178,6 +179,7 @@ main {
 
     .projects {
       display: grid;
+      margin-top: 6px;
       grid-template-columns: 1fr 1fr;
       grid-column-gap: 6px;
       grid-row-gap: 0;
@@ -190,6 +192,8 @@ main {
         display: flex;
         flex-direction: column;
         margin-top: 6px;
+        font-size: 0.95em;
+        justify-content: space-between;
 
         .title {
           display: flex;
@@ -206,6 +210,10 @@ main {
 
           .name {
             font-weight: bold;
+          }
+
+          .separator {
+            margin: 0 4px;
           }
         }
 
@@ -267,43 +275,25 @@ main {
       margin-bottom: 0 !important;
     }
   }
-
-  footer {
-    margin-top: 24px !important;
-    text-align: center;
-    position: relative !important;
-    display: flex;
-    flex-direction: column;
-    select {
-      max-width: 250px;
-    }
-  }
 }
 
 a {
   color: var(--accent);
   text-decoration: none;
-}
 
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  margin: 12px;
-  color: var(--border);
-  transition: 0.2s;
-
-  a {
-    color: var(--border);
-    transition: 0.2s;
+  &:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
   }
 }
 
-footer:hover {
-  color: var(--color);
+footer {
+  color: var(--subtext0);
+  padding: 12px 0;
+  text-align: center;
 
-  a {
-    color: var(--accent);
+  select {
+    max-width: 250px;
   }
 }
 
@@ -316,4 +306,29 @@ footer:hover {
     translate: 0 0;
     opacity: 1;
   }
+}
+
+.sponsors {
+  margin-top: 6px;
+
+  .sponsor {
+    @size: 48px;
+    width: @size;
+    height: @size;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    margin: 3px;
+    transition: 0.2s;
+    cursor: pointer;
+    background-color: var(--accent-background);
+
+    &:hover {
+      border-color: var(--accent-hover);
+    }
+  }
+}
+
+.comment {
+  font-style: italic;
+  color: var(--subtext0);
 }

@@ -1,5 +1,4 @@
 import { ReactElement } from 'react';
-import { IconType } from '@icons-pack/react-simple-icons';
 
 export const IconLink = ({
   icon,
@@ -8,7 +7,7 @@ export const IconLink = ({
   title,
   url,
 }: {
-  icon?: ReactElement<IconType>;
+  icon?: ReactElement<HTMLSpanElement>;
   iconName?: string;
   accent?: string;
   title: string;
