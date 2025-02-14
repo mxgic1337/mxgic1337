@@ -114,6 +114,10 @@ function App() {
               return (
                 <Project
                   author={project.author}
+                  accent={
+                    flavors.find((flavor1) => flavor1.className === flavor)
+                      ?.accent
+                  }
                   type={project.type}
                   name={project.name}
                   description={project.description}

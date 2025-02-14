@@ -57,7 +57,7 @@ body {
 select {
   color: var(--color);
   padding: 8px;
-  background: var(--base);
+  background: var(--mantle);
   margin: 3px;
   border-radius: 10px;
   border: 1px solid var(--border);
@@ -145,13 +145,13 @@ main {
         .learning {
           position: relative;
           top: 1px;
-          color: var(--accent);
-          background-color: var(--accent-background);
+          color: var(--green);
+          background-color: var(--green-background);
           font-size: 0.75em;
           padding: 2px 10px;
           border-radius: 10px;
           margin-left: 8px;
-          border: 1px solid var(--accent);
+          border: 1px solid var(--green);
         }
 
         p {
@@ -193,6 +193,7 @@ main {
         flex-direction: column;
         margin-top: 6px;
         font-size: 0.95em;
+        justify-content: space-between;
 
         .title {
           display: flex;
@@ -209,6 +210,10 @@ main {
 
           .name {
             font-weight: bold;
+          }
+
+          .separator {
+            margin: 0 4px;
           }
         }
 
@@ -310,14 +315,15 @@ footer {
     @size: 48px;
     width: @size;
     height: @size;
-    border: 1px solid var(--border);
+    border: 1px solid var(--accent);
     border-radius: 50%;
     margin: 3px;
     transition: 0.2s;
     cursor: pointer;
+    background-color: var(--accent-background);
 
     &:hover {
-      border-color: var(--accent);
+      border-color: var(--accent-hover);
     }
   }
 }

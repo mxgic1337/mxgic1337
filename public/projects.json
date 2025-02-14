@@ -45,7 +45,7 @@
     "name": "mxgic1337",
     "author": "mxgic1337",
     "description": "Source code of my website :D",
-    "languages": ["typescript", "react", "vite", "less"],
+    "languages": ["typescript", "react", "vite", "less", "rust"],
     "type": "github",
     "urls": [],
     "badge": "https://wakatime.com/badge/user/3a057790-d695-462e-aada-aa717a266ec9/project/311c570a-3e0d-4c23-a9c3-a80b7b7d5c53.svg"

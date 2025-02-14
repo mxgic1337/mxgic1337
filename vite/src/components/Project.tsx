@@ -1,11 +1,10 @@
 import { IconLink } from './IconLink.tsx';
-import { languageIcons } from '../utils/language_icons.tsx';
+import { languageIconsOverrides } from '../utils/language_icons.tsx';
 import {
   IconType,
   SiDiscord,
   SiFirefox,
   SiGithub,
-  SiJetbrains,
   SiTwitch,
   SiYoutube,
 } from '@icons-pack/react-simple-icons';
@@ -14,6 +13,7 @@ import FeatherIcon from 'feather-icons-react';
 
 export const Project = ({
   author,
+  accent,
   type,
   url,
   name,
@@ -23,6 +23,7 @@ export const Project = ({
   urls,
 }: {
   author: string;
+  accent?: string;
   badge?: string;
   description?: string;
   languages: string[];
@@ -61,30 +62,34 @@ export const Project = ({
 
   return (
     <div className={'project'}>
-      <p className={'title'}>
-        <FeatherIcon icon={'book'} />
-        <span
-          onClick={() => {
-            if (type === 'github') {
-              window.open(`https://github.com/${author}/${name}`);
-            } else {
-              window.open(url);
-            }
-          }}
-          className={'full-name'}
-        >
-          <span className={'author'}>{author} /</span>
-          <span className={'name'}> {name}</span>
-        </span>
-      </p>
-      <p className={'description'}>{description}</p>
+      <div>
+        <p className={'title'}>
+          <FeatherIcon icon={'book'} />
+          <span
+            onClick={() => {
+              if (type === 'github') {
+                window.open(`https://github.com/${author}/${name}`);
+              } else {
+                window.open(url);
+              }
+            }}
+            className={'full-name'}
+          >
+            <span className={'author'}>{author}</span>
+            <span className={'separator'}>/</span>
+            <span className={'name'}>{name}</span>
+          </span>
+        </p>
+        <p className={'description'}>{description}</p>
+      </div>
       <div className={'badges'}>
         <div style={{ display: 'flex' }}>
           {languages.map((language) => {
             return (
               <IconLink
-                icon={languageIcons[language] || <SiJetbrains />}
-                title={language}
+                iconName={languageIconsOverrides[language] || language}
+                accent={accent}
+                title={language.charAt(0).toUpperCase() + language.substring(1)}
               />
             );
           })}
