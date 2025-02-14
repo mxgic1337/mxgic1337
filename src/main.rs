@@ -1,5 +1,6 @@
 #[macro_use]
 extern crate rocket;
+use dotenv::dotenv;
 use rocket::fs::FileServer;
 use rocket::response::Redirect;
 mod github;
@@ -11,6 +12,7 @@ fn redirect_index() -> Redirect {
 
 #[rocket::launch]
 fn rocket() -> _ {
+    dotenv().ok();
     rocket::build()
         .mount("/", FileServer::from("dist"))
         .mount("/api", rocket::routes![github::sponsors])
