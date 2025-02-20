@@ -18,9 +18,10 @@ const flavors = [
 ];
 
 export interface Sponsor {
+  name: string | null;
   username: string;
   avatar: string;
-  tier: string;
+  tier: { name: string } | null;
 }
 
 function App() {

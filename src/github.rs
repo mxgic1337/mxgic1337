@@ -23,27 +23,29 @@ pub struct Sponsorships {
 #[derive(Deserialize)]
 pub struct SponsorshipsNode {
     sponsorEntity: SponsorEntity,
-    tier: SponsorTier,
+    tier: Option<SponsorTier>,
 }
 
 #[allow(non_snake_case)]
 #[derive(Deserialize)]
 pub struct SponsorEntity {
+    name: Option<String>,
     login: String,
     avatarUrl: String,
 }
 
 #[allow(non_snake_case)]
-#[derive(Deserialize)]
+#[derive(Deserialize, Serialize)]
 pub struct SponsorTier {
     name: String,
 }
 
 #[derive(Serialize)]
 pub struct Sponsor {
+    name: Option<String>,
     username: String,
     avatar: String,
-    tier: String,
+    tier: Option<SponsorTier>,
 }
 
 #[rocket::get("/sponsors")]
@@ -57,6 +59,7 @@ pub async fn sponsors() -> Json<Vec<Sponsor>> {
       nodes {
         sponsorEntity {
           ... on User {
+            name
             login
             avatarUrl
           }
@@ -84,9 +87,10 @@ pub async fn sponsors() -> Json<Vec<Sponsor>> {
     let mut sponsor_list: Vec<Sponsor> = vec![];
     for user in sponsors {
         sponsor_list.push(Sponsor {
+            name: user.sponsorEntity.name,
             username: user.sponsorEntity.login,
             avatar: user.sponsorEntity.avatarUrl,
-            tier: user.tier.name,
+            tier: user.tier,
         });
     }
     Json(sponsor_list)
