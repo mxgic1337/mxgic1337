@@ -112,7 +112,12 @@ export const Project = ({
             </>
           )}
         </div>
-        {badge && <img alt={'Wakatime'} src={`${badge}?style=flat-square`} />}
+        {badge && (
+          <img
+            alt={'Wakatime'}
+            src={`${badge}?style=flat-square&color=${accent}`}
+          />
+        )}
       </div>
     </div>
   );
