@@ -11,10 +11,10 @@ import { Sponsors } from './components/Sponsors.tsx';
 
 type Flavor = 'latte' | 'frappe' | 'macchiato' | 'mocha';
 const flavors = [
-  { name: 'Catppuccin Latte', className: 'latte', accent: '8839ef' },
-  { name: 'Catppuccin Frappé', className: 'frappe', accent: 'ca9ee6' },
-  { name: 'Catppuccin Macchiato', className: 'macchiato', accent: 'c6a0f6' },
-  { name: 'Catppuccin Mocha', className: 'mocha', accent: 'cba6f7' },
+  { name: 'Catppuccin Latte', className: 'latte', accent: 'e64553' },
+  { name: 'Catppuccin Frappé', className: 'frappe', accent: 'ea999c' },
+  { name: 'Catppuccin Macchiato', className: 'macchiato', accent: 'ee99a0' },
+  { name: 'Catppuccin Mocha', className: 'mocha', accent: 'eba0ac' },
 ];
 
 export interface Sponsor {

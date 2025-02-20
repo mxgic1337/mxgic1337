@@ -1,10 +1,11 @@
 .mocha {
   @green: #a6e3a1;
+  @accent: #eba0ac;
   --color: #cdd6f4;
   --subtext0: #a6adc8;
-  --accent: #cba6f7;
-  --accent-background: fade(#cba6f7, 10%);
-  --accent-hover: darken(#cba6f7, 5%);
+  --accent: @accent;
+  --accent-background: fade(@accent, 10%);
+  --accent-hover: darken(@accent, 5%);
   --yellow: #f9e2af;
   --green: @green;
   --green-background: fade(@green, 10%);
