@@ -43,6 +43,9 @@ jobs:
   build:
     name: Build & Deploy
     needs: format-and-generate-readme
+    environment:
+      name: mxgic1337.xyz
+      url: 'https://mxgic1337.xyz'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
