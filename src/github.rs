@@ -1,5 +1,5 @@
+use axum::Json;
 use gql_client::Client;
-use rocket::serde::json::Json;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
@@ -48,10 +48,8 @@ pub struct Sponsor {
     tier: Option<SponsorTier>,
 }
 
-#[rocket::get("/sponsors")]
 pub async fn sponsors() -> Json<Vec<Sponsor>> {
-    // TODO: Add sponsors
-    let token = std::env::var("GITHUB_TOKEN").expect("Missing GITHUB_TOKEN env variable.");
+    let token = std::env::var("GITHUB_TOKEN").expect("Missing GITHUB_TOKEN env variable");
     let endpoint = "https://api.github.com/graphql";
     let query = r#"query {
   user(login: "mxgic1337") {
@@ -82,7 +80,11 @@ pub async fn sponsors() -> Json<Vec<Sponsor>> {
     headers.insert("Authorization", authorization_header.as_str());
     headers.insert("User-Agent", user_agent_header.as_str());
     let client = Client::new_with_headers(endpoint, headers);
-    let data = client.query::<SponsorData>(query).await.unwrap().unwrap();
+    let data = client
+        .query::<SponsorData>(query)
+        .await
+        .expect("Request failed")
+        .unwrap();
     let sponsors = data.user.sponsorshipsAsMaintainer.nodes;
     let mut sponsor_list: Vec<Sponsor> = vec![];
     for user in sponsors {
