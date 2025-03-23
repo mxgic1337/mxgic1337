@@ -16,7 +16,7 @@
   {
     "name": "faceit-stats-widget",
     "author": "mxgic1337",
-    "description": "A widget for OBS Studio that displays FACEIT stats.",
+    "description": "A widget for OBS Studio that displays FACEIT stats",
     "languages": ["react", "vite", "less"],
     "type": "github",
     "urls": [
@@ -28,18 +28,13 @@
     "badge": "https://wakatime.com/badge/user/3a057790-d695-462e-aada-aa717a266ec9/project/45acda3c-9663-4f18-9cc5-abbf7ebceb29.svg"
   },
   {
-    "name": "protonfox",
-    "author": "mxgic1337",
-    "description": "Extension that displays information about game compatibility with Proton on Steam. ",
-    "languages": ["typescript", "webpack", "less"],
+    "name": "jellyfin",
+    "author": "catppuccin",
+    "description": "Soothing pastel theme for Jellyfin",
+    "languages": ["css"],
     "type": "github",
-    "urls": [
-      {
-        "text": "Mozilla Add-ons",
-        "url": "https://addons.mozilla.org/en-US/firefox/addon/protonfox-for-steam/"
-      }
-    ],
-    "badge": "https://wakatime.com/badge/user/3a057790-d695-462e-aada-aa717a266ec9/project/84ed40f6-e426-4986-bffd-05bc876bf8da.svg"
+    "urls": [],
+    "badge": "https://wakatime.com/badge/user/3a057790-d695-462e-aada-aa717a266ec9/project/a11f25b2-c1fc-4d67-8948-6bd115946a6c.svg"
   },
   {
     "name": "mxgic1337",
