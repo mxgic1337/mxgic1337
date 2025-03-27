@@ -13,7 +13,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "feather-icons-react": "^0.7.1",
     "less": "^4.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
