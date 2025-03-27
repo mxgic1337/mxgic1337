@@ -33,7 +33,12 @@
     "description": "Soothing pastel theme for Jellyfin",
     "languages": ["css"],
     "type": "github",
-    "urls": [],
+    "urls": [
+      {
+        "text": "Catppuccin",
+        "url": "https://catppuccin.com"
+      }
+    ],
     "badge": "https://wakatime.com/badge/user/3a057790-d695-462e-aada-aa717a266ec9/project/a11f25b2-c1fc-4d67-8948-6bd115946a6c.svg"
   },
   {
