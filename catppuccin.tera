@@ -1,0 +1,23 @@
+---
+whiskers:
+  version: 2.5.1
+  matrix:
+    - flavor
+  filename: 'vite/src/css/flavors/{{flavor.identifier}}.less'
+---
+.{{flavor.identifier}} {
+  @green: #{{green.hex}};
+  @accent: #{{maroon.hex}};
+  --text: #{{text.hex}};
+  --subtext0: #{{subtext0.hex}};
+  --accent: @accent;
+  --accent-background: fade(@accent, 10%);
+  --accent-hover: darken(@accent, 5%);
+  --yellow: #{{yellow.hex}};
+  --green: @green;
+  --green-background: fade(@green, 10%);
+  --surface0: #{{surface0.hex}};
+  --base: #{{base.hex}};
+  --mantle: #{{mantle.hex}};
+  --crust: #{{crust.hex}};
+}
