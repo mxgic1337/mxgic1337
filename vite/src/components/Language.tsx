@@ -26,7 +26,11 @@ export const Language = ({
       <p>
         <span className={'icon'}>{nfIcons[text.toLowerCase()]}</span> {text}
         {learning && <span className={'learning'}>Learning</span>}
-        {stats && <span className={'time'}>({getTime(text)?.text})</span>}
+        {stats ? (
+          <span className={'time'}>({getTime(text)?.text})</span>
+        ) : (
+          <span className={'time'}>(...)</span>
+        )}
       </p>
       <div style={{ display: 'flex' }}>
         {libraries &&
