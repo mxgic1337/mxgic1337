@@ -1,5 +1,3 @@
-import FeatherIcon from 'feather-icons-react';
-
 export const SectionTitle = ({
   text,
   icon,
@@ -10,7 +8,7 @@ export const SectionTitle = ({
   return (
     <div className={'section-title'}>
       <p>
-        {icon && <FeatherIcon icon={icon} />} {text}
+        {icon && <span className={'icon'}>{icon}</span>} {text}
       </p>
       <hr />
     </div>

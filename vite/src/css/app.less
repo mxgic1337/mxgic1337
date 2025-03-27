@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+@import 'fonts';
 @import 'flavors/mocha';
 @import 'flavors/macchiato';
 @import 'flavors/frappe';
@@ -7,7 +7,7 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: 'Fira Code', sans-serif;
+  font-family: 'FiraCodeNF', sans-serif;
   user-select: none;
 }
 
@@ -24,11 +24,16 @@ body {
 }
 
 .icon-link {
-  @size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @size: 22px;
   width: @size;
   height: @size;
+  font-size: @size;
   color: var(--accent);
-  padding: 8px;
+  padding: 6px;
   background: var(--mantle);
   margin: 3px;
 
@@ -37,6 +42,7 @@ body {
     height: 100%;
   }
 
+  text-decoration: none !important;
   border-radius: 10px;
   border: 1px solid var(--border);
 }
@@ -114,13 +120,12 @@ main {
 
       min-width: 350px;
 
-      .feather {
+      .icon {
         position: relative;
-        top: 2px;
         @size: 16px;
         width: @size;
         height: @size;
-        text-align: left;
+        text-align: center;
         margin-right: 0px;
       }
 
@@ -143,8 +148,6 @@ main {
         align-items: center;
 
         .learning {
-          position: relative;
-          top: 1px;
           color: var(--green);
           background-color: var(--green-background);
           font-size: 0.75em;
@@ -154,16 +157,27 @@ main {
           border: 1px solid var(--green);
         }
 
+        .time {
+          margin: 0 6px;
+          opacity: 0.1;
+          color: var(--subtext0);
+        }
+
+        &:hover .time {
+          opacity: 0.3;
+        }
+
         p {
           display: flex;
           align-items: center;
 
-          img,
-          svg {
-            @size: 18px;
-            width: @size;
-            height: @size;
-            margin-right: 6px;
+          .icon {
+            color: var(--accent);
+            position: relative;
+            top: -1px;
+            font-size: 1.25em;
+            width: 18px;
+            margin-right: 4px;
           }
         }
 
@@ -199,11 +213,13 @@ main {
           display: flex;
           align-items: center;
 
-          svg {
+          .icon {
+            position: relative;
+            top: -2px;
             width: 1em;
             height: 1em;
             color: var(--color);
-            margin-right: 6px;
+            margin-right: 4px;
           }
 
           color: var(--accent);

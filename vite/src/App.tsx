@@ -25,6 +25,9 @@ export interface Sponsor {
 }
 
 function App() {
+  const [wakaTimeStats, setWakaTimeStats] = useState<{
+    data: { name: string; text: string }[];
+  }>();
   const [flavor, setFlavor] = useState<Flavor>(
     (localStorage.getItem('flavor') as Flavor) || 'mocha'
   );
@@ -52,6 +55,13 @@ function App() {
         setSponsors(await response.json());
       }
     });
+    fetch(
+      'https://wakatime.com/share/@mxgic1337/91258e31-1dd0-41f7-9f9c-c1c5cbc30f46.json'
+    ).then(async (response) => {
+      if (response.ok) {
+        setWakaTimeStats(await response.json());
+      }
+    });
   }, []);
 
   useLayoutEffect(() => {
@@ -77,7 +87,7 @@ function App() {
               {links_json.map((link) => {
                 return (
                   <IconLink
-                    iconName={link.name.toLowerCase()}
+                    icon={link.icon}
                     accent={
                       flavors.find((flavor1) => flavor1.className === flavor)
                         ?.accent
@@ -91,26 +101,22 @@ function App() {
           </div>
         </div>
         <section>
-          <SectionTitle text={'Languages:'} icon={'code'} />
+          <SectionTitle text={'Languages:'} icon={''} />
           <div className={'languages'}>
             {languages_json.map((language) => {
               return (
                 <Language
-                  icon={language.icon}
                   text={language.name}
+                  stats={wakaTimeStats}
                   learning={language.learning}
                   libraries={language.tools}
-                  accent={
-                    flavors.find((flavor1) => flavor1.className === flavor)
-                      ?.accent
-                  }
                 />
               );
             })}
           </div>
         </section>
         <section>
-          <SectionTitle text={'Projects:'} icon={'book'} />
+          <SectionTitle text={'Projects:'} icon={''} />
           <p className={'comment'}>
             {'// Stuff that I work on in my free time'}
           </p>
@@ -143,17 +149,6 @@ function App() {
               Catppuccin
             </a>{' '}
             color scheme.
-          </p>
-          <p>
-            Icons by{' '}
-            <a target={'_blank'} href={'https://feathericons.com'}>
-              Feather Icons
-            </a>
-            {' & '}
-            <a target={'_blank'} href={'https://simpleicons.org'}>
-              Simple Icons
-            </a>
-            .
           </p>
           <div className={'theme-switcher'}>
             <select

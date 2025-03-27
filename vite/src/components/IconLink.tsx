@@ -2,15 +2,13 @@ import { ReactElement } from 'react';
 
 export const IconLink = ({
   icon,
-  iconName,
-  accent,
   title,
   url,
 }: {
-  icon?: ReactElement<HTMLSpanElement>;
+  icon?: ReactElement<HTMLSpanElement> | string;
   iconName?: string;
   accent?: string;
-  title: string;
+  title?: string;
   url?: string;
 }) => {
   return (
@@ -21,11 +19,6 @@ export const IconLink = ({
       target={'_blank'}
     >
       {icon && icon}
-      {iconName && (
-        <img
-          src={`https://cdn.simpleicons.org/${iconName}/${accent || 'currentColor'}`}
-        />
-      )}
     </a>
   );
 };

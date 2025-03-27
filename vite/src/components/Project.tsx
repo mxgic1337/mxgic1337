@@ -1,7 +1,6 @@
 import { IconLink } from './IconLink.tsx';
-import { languageIconsOverrides } from '../utils/language_icons.tsx';
+import { nfIcons } from '../utils/language_icons.tsx';
 import { ReactElement } from 'react';
-import FeatherIcon from 'feather-icons-react';
 
 export const Project = ({
   author,
@@ -24,51 +23,36 @@ export const Project = ({
   url?: string;
   urls: { text: string; url: string }[];
 }) => {
-  function getIconImgElement(icon: string, title?: string) {
-    return (
-      <img
-        src={`https://cdn.simpleicons.org/${icon}/${accent || 'currentColor'}`}
-        title={title ? title : icon.charAt(0).toUpperCase() + icon.substring(1)}
-      />
-    );
-  }
-
   function getIcon(
-    url: string,
-    title?: string
-  ): ReactElement<HTMLImageElement | HTMLSpanElement> {
+    url: string
+  ): ReactElement<HTMLImageElement | HTMLSpanElement> | string {
     if (url.startsWith('https://github.com')) {
-      return getIconImgElement('github', title);
+      return nfIcons['github'];
     } else if (
       url.startsWith('https://youtube.com') ||
       url.startsWith('https://youtube.com')
     ) {
-      return getIconImgElement('youtube', title);
+      return nfIcons['youtube'];
     } else if (
       url.startsWith('https://discord.com') ||
       url.startsWith('https://discord.gg')
     ) {
-      return getIconImgElement('discord', title);
+      return nfIcons['discord'];
     } else if (
       url.startsWith('https://twitch.tv') ||
       url.startsWith('https://subs.twitch.tv')
     ) {
-      return getIconImgElement('twitch', title);
+      return nfIcons['twitch'];
     } else if (url.startsWith('https://addons.mozilla.org')) {
-      return getIconImgElement('firefoxbrowser', title);
-    } else
-      return (
-        <span title={title}>
-          <FeatherIcon icon={'globe'} />
-        </span>
-      );
+      return nfIcons['firefox'];
+    } else return nfIcons['globe'];
   }
 
   return (
     <div className={'project'}>
       <div>
         <p className={'title'}>
-          <FeatherIcon icon={'book'} />
+          <span className={'icon'}>{''}</span>
           <span
             onClick={() => {
               if (type === 'github') {
@@ -89,13 +73,7 @@ export const Project = ({
       <div className={'badges'}>
         <div style={{ display: 'flex' }}>
           {languages.map((language) => {
-            return (
-              <IconLink
-                iconName={languageIconsOverrides[language] || language}
-                accent={accent}
-                title={language.charAt(0).toUpperCase() + language.substring(1)}
-              />
-            );
+            return <IconLink icon={nfIcons[language]} />;
           })}
           {urls.length !== 0 && (
             <>
@@ -103,7 +81,7 @@ export const Project = ({
               {urls.map((url) => {
                 return (
                   <IconLink
-                    icon={getIcon(url.url, url.text)}
+                    icon={getIcon(url.url)}
                     title={url.text}
                     url={url.url}
                   />

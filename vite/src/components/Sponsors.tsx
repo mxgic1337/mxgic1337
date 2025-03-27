@@ -4,7 +4,7 @@ import { SectionTitle } from './SectionTitle';
 export const Sponsors = ({ sponsors }: { sponsors: Sponsor[] }) => {
   return (
     <section>
-      <SectionTitle text={'GitHub Sponsors:'} icon={'heart'} />
+      <SectionTitle text={'GitHub Sponsors:'} icon={'♥'} />
       <p className={'comment'}>{'// Thank you for supporting me :D'}</p>
       <div className={'sponsors'}>
         {sponsors.map((sponsor) => {
