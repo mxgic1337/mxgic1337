@@ -14,24 +14,28 @@ export const Language = ({
   stats?: { data: { name: string; text: string }[] };
   accent?: string;
 }) => {
+  function getTime(language: string) {
+    if (!stats) return undefined;
+    return stats.data.find(
+      (lang) => lang.name.toLowerCase() === language.toLowerCase()
+    );
+  }
+
   return (
     <div className={'language'}>
       <p>
         <span className={'icon'}>{nfIcons[text.toLowerCase()]}</span> {text}
         {learning && <span className={'learning'}>Learning</span>}
-        {stats && (
-          <span className={'time'}>
-            ({stats.data.find((lang) => lang.name === text)?.text})
-          </span>
-        )}
+        {stats && <span className={'time'}>({getTime(text)?.text})</span>}
       </p>
       <div style={{ display: 'flex' }}>
         {libraries &&
           libraries.map((library) => {
+            const time = getTime(library);
             return (
               <IconLink
                 icon={nfIcons[library.toLowerCase()]}
-                title={library}
+                title={`${library}${time ? ` | ${time.text}` : ''}`}
                 accent={accent}
               />
             );
