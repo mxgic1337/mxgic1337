@@ -21,7 +21,11 @@ export interface Sponsor {
   name: string | null;
   username: string;
   avatar: string;
-  tier: { name: string, monthlyPriceInCents: number, isOneTime: boolean } | null;
+  tier: {
+    name: string;
+    monthlyPriceInCents: number;
+    isOneTime: boolean;
+  } | null;
 }
 
 function App() {
@@ -52,12 +56,14 @@ function App() {
     });
     fetch('/api/sponsors').then(async (response) => {
       if (response.ok) {
-        setSponsors((await response.json())
-          .filter((sponsor: Sponsor) => sponsor.tier)
-          .sort((a: Sponsor, b: Sponsor) => {
-            if (!a.tier || !b.tier) return;
-            return a.tier.monthlyPriceInCents + b.tier.monthlyPriceInCents
-          }));
+        setSponsors(
+          (await response.json())
+            .filter((sponsor: Sponsor) => sponsor.tier)
+            .sort((a: Sponsor, b: Sponsor) => {
+              if (!a.tier || !b.tier) return;
+              return a.tier.monthlyPriceInCents + b.tier.monthlyPriceInCents;
+            })
+        );
       }
     });
     fetch(
