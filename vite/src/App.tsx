@@ -21,7 +21,7 @@ export interface Sponsor {
   name: string | null;
   username: string;
   avatar: string;
-  tier: { name: string } | null;
+  tier: { name: string, monthlyPriceInCents: number, isOneTime: boolean } | null;
 }
 
 function App() {
@@ -52,7 +52,12 @@ function App() {
     });
     fetch('/api/sponsors').then(async (response) => {
       if (response.ok) {
-        setSponsors(await response.json());
+        setSponsors((await response.json())
+          .filter((sponsor: Sponsor) => sponsor.tier)
+          .sort((a: Sponsor, b: Sponsor) => {
+            if (!a.tier || !b.tier) return;
+            return a.tier.monthlyPriceInCents + b.tier.monthlyPriceInCents
+          }));
       }
     });
     fetch(
@@ -101,7 +106,7 @@ function App() {
           </div>
         </div>
         <section>
-          <SectionTitle text={'Languages:'} icon={''} />
+          <SectionTitle text={'Languages'} icon={''} />
           <div className={'languages'}>
             {languages_json.map((language) => {
               return (
@@ -116,7 +121,7 @@ function App() {
           </div>
         </section>
         <section>
-          <SectionTitle text={'Projects:'} icon={''} />
+          <SectionTitle text={'Projects'} icon={''} />
           <p className={'comment'}>
             {'// Stuff that I work on in my free time'}
           </p>

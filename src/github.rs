@@ -38,6 +38,8 @@ pub struct SponsorEntity {
 #[derive(Deserialize, Serialize)]
 pub struct SponsorTier {
     name: String,
+    monthlyPriceInCents: u32,
+    isOneTime: bool,
 }
 
 #[derive(Serialize)]
@@ -63,7 +65,9 @@ pub async fn sponsors() -> Json<Vec<Sponsor>> {
           }
         }
         tier {
-          name
+          name,
+          isOneTime,
+          monthlyPriceInCents
         }
       }
     }
