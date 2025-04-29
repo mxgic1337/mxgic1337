@@ -11,7 +11,4 @@ Hi, I'm **mxgic1337\_**! 👋
 **Languages:**
 
 {{ languages }}
-
-Currently learning:
-
 {{ languages_learning }}
