@@ -240,3 +240,5 @@ fabric.properties
 
 *.secrets
 event.json
+
+.obisidian/
