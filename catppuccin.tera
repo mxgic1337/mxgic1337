@@ -3,7 +3,7 @@ whiskers:
   version: 2.5.1
   matrix:
     - flavor
-  filename: 'vite/src/css/flavors/{{flavor.identifier}}.less'
+  filename: 'styles/flavors/{{flavor.identifier}}.less'
 ---
 .{{flavor.identifier}} {
   @green: #{{green.hex}};

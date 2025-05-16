@@ -5,27 +5,28 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build --emptyOutDir",
     "format": "prettier --write .",
-    "readme:generate": "tsx scripts/generate_readme.ts",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "less:build": "lessc styles/app.less dist/app.css",
+    "readme:generate": "tsx scripts/generate_readme.ts"
   },
   "dependencies": {
-    "less": "^4.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
+    "@types/express": "^5.0.1",
+    "@types/less": "^3.0.8",
+    "@types/node": "^22.15.18",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "eslint": "^9.9.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
+    "express": "^5.1.0",
     "globals": "^15.9.0",
+    "less": "^4.2.1",
     "prettier": "^3.4.2",
     "tsx": "^4.19.2",
     "typescript": "^5.5.3",
