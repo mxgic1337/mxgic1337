@@ -1,0 +1,36 @@
+<section>
+  <div class="section-title">
+    <p>
+      <span class="icon"></span> Projects
+    </p>
+    <hr />
+  </div>
+  <p class="comment">// Stuff that I work on in my free time</p>
+  <div class="projects">
+    {% for project in projects %}
+    <div class="project">
+      <div>
+        <p class="title">
+          <span class="icon"></span>
+          <span onclick="window.open(`https://github.com/{{ project.author }}/{{ project.name }}`);" class="full-name">
+            <span class="author">{{ project.author }}</span>
+            <span class="separator">/</span>
+            <span class="name">{{ project.name }}</span>
+          </span>
+        </p>
+        <p class="description">{{ project.description }}</p>
+      </div>
+      <div class="badges">
+        <div style="display: flex;">
+          {% for language in project.languages %}
+          <a class="icon-link">
+            <script>addIconCharacter('{{ language }}')</script>
+          </a>
+          {% endfor %}
+        </div>
+        {% if project.badge %}<img alt="WakaTime Badge" src="{{ project.badge }}?style=flat-square&color=eba0ac" />{% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
