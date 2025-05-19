@@ -7,6 +7,7 @@ const ICONS = [
   { id: "less", name: "Less", icon: "" },
   { id: "css", name: "CSS", icon: "" },
   { id: "rust", name: "Rust", icon: "" },
+  { id: "website", name: "Website", icon: "" },
 ]
 
 function getIcon(id) {
@@ -20,5 +21,7 @@ function addIconCharacter(id) {
     icon = { name: id, icon: "" }
   }
   parentNode.textContent = icon.icon;
-  parentNode.title = icon.name;
+  if (!parentNode.title) {
+    parentNode.title = icon.name;
+  }
 }

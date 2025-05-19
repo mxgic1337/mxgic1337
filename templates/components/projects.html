@@ -27,8 +27,16 @@
             <script>addIconCharacter('{{ language }}')</script>
           </a>
           {% endfor %}
+          {% if project.urls | length > 0 %}
+            <hr />
+            {% for url in project.urls %}
+            <a class="icon-link" href="{{ url.url }}" title="{{ url.text }}" target="_blank">
+              <script>addIconCharacter('website')</script>
+            </a>
+            {% endfor %}
+          {% endif %}
         </div>
-        {% if project.badge %}<img alt="WakaTime Badge" src="{{ project.badge }}?style=flat-square&color=eba0ac" />{% endif %}
+        {% if project.badge %}<img alt="WakaTime Badge" class="wakatime-badge" src="{{ project.badge }}?style=flat-square&color=eba0ac" />{% endif %}
       </div>
     </div>
     {% endfor %}
