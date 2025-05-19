@@ -55,4 +55,18 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   switcher.value = defaultTheme;
   setTheme(defaultTheme);
+
+  fetch(
+    'https://wakatime.com/share/@mxgic1337/91258e31-1dd0-41f7-9f9c-c1c5cbc30f46.json'
+  ).then(async (response) => {
+    if (response.ok) {
+      const stats = (await response.json()).data;
+      const languagesDiv = document.getElementsByClassName('languages')[0];
+      for (const languageDiv of languagesDiv.getElementsByClassName('language')) {
+        const languageStats = stats.find(language => language.name.toLowerCase() === languageDiv.getAttribute('data-language'));
+        if (!languageStats) continue;
+        languageDiv.getElementsByClassName('time')[0].textContent = `(${languageStats.text})`
+      }
+    }
+  });
 })

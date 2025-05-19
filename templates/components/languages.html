@@ -5,7 +5,7 @@
   </div>
   <div class="languages">
     {% for language in languages %}
-    <div class="language">
+    <div class="language" data-language="{{ language.name | lower }}">
       <p>
         <span class="icon">
           <script>addIconCharacter('{{ language.name | lower }}')</script>
