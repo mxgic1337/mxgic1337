@@ -5,6 +5,7 @@ const ICONS = [
   { id: "react", name: "React", icon: "" },
   { id: "vite", name: "Vite", icon: "" },
   { id: "less", name: "Less", icon: "" },
+  { id: "sass", name: "Sass", icon: "" },
   { id: "css", name: "CSS", icon: "" },
   { id: "rust", name: "Rust", icon: "" },
   { id: "website", name: "Website", icon: "" },
@@ -16,6 +17,7 @@ function getIcon(id) {
 
 function addIconCharacter(id) {
   const parentNode = document.currentScript.parentNode;
+  document.currentScript.remove()
   let icon = getIcon(id)
   if (!icon) {
     icon = { name: id, icon: "" }

@@ -1,12 +1,12 @@
 use axum::{
-    extract::State,
-    http::header,
-    response::{Html, IntoResponse},
-    routing::get,
-    Router,
+	extract::State,
+	http::header,
+	response::{Html, IntoResponse},
+	routing::get,
+	Router,
 };
 use dotenv::dotenv;
-use serde::{Deserialize, Serialize};
+use serde::{de::DeserializeOwned, Deserialize, Serialize};
 use std::{env, error::Error, sync::Arc};
 use tera::{Context, Tera};
 
@@ -15,78 +15,92 @@ mod github;
 
 #[derive(Clone)]
 pub struct AppState {
-    tera: Arc<Tera>,
-    projects: Arc<Vec<Project>>,
+	tera: Arc<Tera>,
+	projects: Arc<Vec<Project>>,
+	languages: Arc<Vec<Language>>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct Language {
+	name: String,
+	icon: Option<String>,
+	tools: Option<Vec<String>>,
+	learning: Option<bool>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ProjectUrl {
-    text: String,
-    url: String,
+	text: String,
+	url: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Project {
-    name: String,
-    author: String,
-    description: String,
-    languages: Vec<String>,
-    #[serde(rename = "type")]
-    project_type: String,
-    urls: Vec<ProjectUrl>,
-    badge: Option<String>,
+	name: String,
+	author: String,
+	description: String,
+	languages: Vec<String>,
+	#[serde(rename = "type")]
+	project_type: String,
+	urls: Vec<ProjectUrl>,
+	badge: Option<String>,
 }
 
-fn read_projects() -> Result<Vec<Project>, Box<dyn Error>> {
-    let projects_file = std::fs::read_to_string("public/projects.json")?;
-    let projects: Vec<Project> = serde_json::from_str(&projects_file)?;
-    Ok(projects)
+fn read_json<T: DeserializeOwned>(path: &str) -> Result<T, Box<dyn Error>> {
+	let file = std::fs::read_to_string(path)?;
+	let contents: T = serde_json::from_str(&file)?;
+	Ok(contents)
 }
 
 #[tokio::main]
 async fn main() {
-    dotenv().ok();
-    let tera = match Tera::new("templates/**/*.html") {
-        Ok(t) => t,
-        Err(e) => {
-            println!("Failed to initialize Tera: {}", e);
-            std::process::exit(1);
-        }
-    };
+	dotenv().ok();
+	let tera = match Tera::new("templates/**/*.html") {
+		Ok(t) => t,
+		Err(e) => {
+			println!("Failed to initialize Tera: {}", e);
+			std::process::exit(1);
+		}
+	};
 
-    let projects = read_projects().expect("failed to read projects from json");
+	let projects = read_json::<Vec<Project>>("public/projects.json")
+		.expect("failed to read projects from json");
+	let languages = read_json::<Vec<Language>>("scripts/languages.json")
+		.expect("failed to read languages from json");
 
-    let state = AppState {
-        tera: Arc::new(tera),
-        projects: Arc::new(projects),
-    };
-    let app = Router::new()
-        .route("/", get(index))
-        .route(
-            "/app.css",
-            get((
-                ([(header::CONTENT_TYPE, "text/css")]),
-                std::fs::read_to_string("dist/app.css").expect("failed to read css"),
-            )),
-        )
-        .nest_service("/static", ServeDir::new("public"))
-        .route("/api/sponsors", get(github::sponsors))
-        .with_state(state);
-    let address = env::var("ADDRESS").unwrap_or("0.0.0.0:8000".to_string());
-    let listener = tokio::net::TcpListener::bind(&address).await.unwrap();
-    println!("Starting server on address {}...", &address);
-    axum::serve(listener, app).await.unwrap();
+	let state = AppState {
+		tera: Arc::new(tera),
+		projects: Arc::new(projects),
+		languages: Arc::new(languages),
+	};
+	let app = Router::new()
+		.route("/", get(index))
+		.route(
+			"/app.css",
+			get((
+				([(header::CONTENT_TYPE, "text/css")]),
+				std::fs::read_to_string("dist/app.css").expect("failed to read css"),
+			)),
+		)
+		.nest_service("/static", ServeDir::new("public"))
+		.route("/api/sponsors", get(github::sponsors))
+		.with_state(state);
+	let address = env::var("ADDRESS").unwrap_or("0.0.0.0:8000".to_string());
+	let listener = tokio::net::TcpListener::bind(&address).await.unwrap();
+	println!("Starting server on address {}...", &address);
+	axum::serve(listener, app).await.unwrap();
 }
 
 async fn index(State(state): State<AppState>) -> impl IntoResponse {
-    let mut context = Context::new();
-    context.insert("title", "mxgic1337.xyz");
-    context.insert("projects", &*state.projects);
+	let mut context = Context::new();
+	context.insert("title", "mxgic1337.xyz");
+	context.insert("projects", &*state.projects);
+	context.insert("languages", &*state.languages);
 
-    Html(
-        state
-            .tera
-            .render("index.html", &context)
-            .expect("failed to render template"),
-    )
+	Html(
+		state
+			.tera
+			.render("index.html", &context)
+			.expect("failed to render template"),
+	)
 }
