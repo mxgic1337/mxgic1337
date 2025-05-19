@@ -16,7 +16,16 @@ whiskers:
   --yellow: #{{yellow.hex}};
   --green: @green;
   --green-background: fade(@green, 10%);
-  --surface0: #{{surface0.hex}};
+  @surface0: #{{surface0.hex}};
+  --surface0: @surface0;
+  --surface0-background: fade(@surface0, 10%);
+  @surface1: #{{surface1.hex}};
+  --surface1: @surface1;
+  --surface1-background: fade(@surface1, 10%);
+  @surface2: #{{surface2.hex}};
+  --surface2: @surface2;
+  --surface2-background: fade(@surface2, 10%);
+  --red: #{{red.hex}};
   --base: #{{base.hex}};
   --mantle: #{{mantle.hex}};
   --crust: #{{crust.hex}};
