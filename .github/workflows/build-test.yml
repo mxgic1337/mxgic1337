@@ -3,7 +3,7 @@ on:
   pull_request:
 
 jobs:
-  cargo:
+  website:
     name: Website
     runs-on: ubuntu-latest
     steps:
@@ -24,10 +24,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Build
-        run: |
-          mkdir -p dist
-          pnpm less:build
-          cargo build
+        run: make build
   whiskers:
     name: Whiskers
     runs-on: ubuntu-latest

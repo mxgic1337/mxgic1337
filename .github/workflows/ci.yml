@@ -71,13 +71,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Build website
-        run: |
-          mkdir -p dist/
-          pnpm run less:build
-          cargo build
-          cp target/debug/mxgic1337 dist/
-          cp -r public/ dist/
-          cp -r templates/ dist/
+        run: make build 
       - name: Deploy
         run: |
           mkdir -p ~/.ssh
