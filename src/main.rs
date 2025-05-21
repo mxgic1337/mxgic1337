@@ -6,45 +6,13 @@ use axum::{
 	Router,
 };
 use dotenv::dotenv;
-use serde::{de::DeserializeOwned, Deserialize, Serialize};
+use serde::de::DeserializeOwned;
 use std::{env, error::Error, sync::Arc};
 use tera::{Context, Tera};
 
 use tower_http::services::ServeDir;
 mod github;
-
-#[derive(Clone)]
-pub struct AppState {
-	tera: Arc<Tera>,
-	projects: Arc<Vec<Project>>,
-	languages: Arc<Vec<Language>>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Language {
-	name: String,
-	icon: Option<String>,
-	tools: Option<Vec<String>>,
-	learning: Option<bool>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ProjectUrl {
-	text: String,
-	url: String,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct Project {
-	name: String,
-	author: String,
-	description: String,
-	languages: Vec<String>,
-	#[serde(rename = "type")]
-	project_type: String,
-	urls: Vec<ProjectUrl>,
-	badge: Option<String>,
-}
+mod structs;
 
 fn read_json<T: DeserializeOwned>(path: &str) -> Result<T, Box<dyn Error>> {
 	let file = std::fs::read_to_string(path)?;
@@ -63,12 +31,12 @@ async fn main() {
 		}
 	};
 
-	let projects = read_json::<Vec<Project>>("public/projects.json")
+	let projects = read_json::<Vec<structs::Project>>("public/projects.json")
 		.expect("failed to read projects from json");
-	let languages = read_json::<Vec<Language>>("scripts/languages.json")
+	let languages = read_json::<Vec<structs::Language>>("scripts/languages.json")
 		.expect("failed to read languages from json");
 
-	let state = AppState {
+	let state = structs::AppState {
 		tera: Arc::new(tera),
 		projects: Arc::new(projects),
 		languages: Arc::new(languages),
@@ -91,7 +59,7 @@ async fn main() {
 	axum::serve(listener, app).await.unwrap();
 }
 
-async fn index(State(state): State<AppState>) -> impl IntoResponse {
+async fn index(State(state): State<structs::AppState>) -> impl IntoResponse {
 	let mut context = Context::new();
 	context.insert("title", "mxgic1337.xyz");
 	context.insert("projects", &*state.projects);
