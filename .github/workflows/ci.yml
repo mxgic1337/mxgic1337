@@ -14,7 +14,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
-      - name: Install pnpm
+      - name: Setup Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          components: rustfmt
+      - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
@@ -27,7 +31,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Format code
-        run: pnpm format
+        run: |
+          cargo fmt
+          pnpm format
       - name: Commit formatting
         uses: EndBug/add-and-commit@v9
         with:
@@ -65,14 +71,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Build website
-        run: |
-          cargo build
-          pnpm run build 
+        run: make build 
       - name: Deploy
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "cd ~ && mkdir -p mxgic1337.xyz && mkdir -p mxgic1337.xyz/dist && cd ~/mxgic1337.xyz && ./kill.sh"
-          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./target/debug/mxgic1337 ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:~/mxgic1337.xyz 
-          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./dist/* ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:~/mxgic1337.xyz/dist
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "cd ~ && mkdir -p mxgic1337.xyz && cd ~/mxgic1337.xyz && ./kill.sh"
+          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./dist/* ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:~/mxgic1337.xyz
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "cd ~/mxgic1337.xyz && ./run.sh"
