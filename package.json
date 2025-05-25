@@ -13,7 +13,7 @@
   "devDependencies": {
     "@types/less": "^3.0.8",
     "@types/node": "^22.15.18",
-    "less": "^4.2.1",
+    "less": "^4.3.0",
     "prettier": "^3.4.2",
     "typescript": "^5.5.3"
   }
