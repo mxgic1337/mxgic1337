@@ -15,6 +15,6 @@
     "less": "^4.2.1",
     "prettier": "^3.4.2",
     "tsx": "^4.19.4",
-    "typescript": "^5.5.3"
+    "typescript": "^5.8.3"
   }
 }
