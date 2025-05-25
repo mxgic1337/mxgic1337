@@ -3,3 +3,4 @@ node_modules
 .gitignore
 pnpm-lock.yaml
 README.md
+templates/
