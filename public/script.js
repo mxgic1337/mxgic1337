@@ -96,6 +96,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const sponsors = await response.json();
       const sponsorsDiv = document.getElementsByClassName('sponsors')[0];
       sponsorsDiv.innerHTML = '';
+      sponsors.sort((a, b) => b.tier.monthlyPriceInCents - a.tier.monthlyPriceInCents)
       for (const sponsor of sponsors) {
         const sponsorAvatar = document.createElement('img');
         sponsorAvatar.classList.add('sponsor');
