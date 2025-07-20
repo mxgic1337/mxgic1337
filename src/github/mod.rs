@@ -38,11 +38,13 @@ pub async fn sponsors() -> Json<Vec<structs::Sponsor>> {
 	headers.insert("Authorization", authorization_header.as_str());
 	headers.insert("User-Agent", user_agent_header.as_str());
 	let client = Client::new_with_headers(endpoint, headers);
-	let data = client
-		.query::<structs::SponsorData>(query)
-		.await
-		.expect("Request failed")
-		.unwrap();
+	let response = client.query::<structs::SponsorData>(query).await;
+	let error = response.as_ref().err();
+	if error.is_some() {
+		println!("Failed to fetch sponsors: {}", error.unwrap());
+		return Json(vec![]);
+	}
+	let data = response.unwrap().unwrap();
 	let sponsors = data.user.sponsorshipsAsMaintainer.nodes;
 	let mut sponsor_list: Vec<structs::Sponsor> = vec![];
 	for user in sponsors {
