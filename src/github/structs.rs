@@ -1,6 +1,11 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Deserialize)]
+pub struct SponsorResponse {
+	pub data: SponsorData,
+}
+
+#[derive(Deserialize)]
 pub struct SponsorData {
 	pub user: User,
 }
