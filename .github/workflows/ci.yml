@@ -49,6 +49,12 @@ jobs:
   build:
     name: Build & Deploy
     needs: format-and-generate-readme
+    if: |
+      contains(join(github.event.push.changed_files, ' '), 'src/') ||
+      contains(join(github.event.push.changed_files, ' '), 'styles/') ||
+      contains(join(github.event.push.changed_files, ' '), 'public/') ||
+      contains(join(github.event.push.changed_files, ' '), 'templates/') ||
+      contains(join(github.event.push.changed_files, ' '), 'Cargo.')
     environment:
       name: mxgic1337.xyz
       url: 'https://mxgic1337.xyz'
