@@ -1,6 +1,9 @@
-use axum::Json;
-use gql_client::Client;
-use std::collections::HashMap;
+use axum::{http::HeaderMap, Json};
+use reqwest::{
+	header::{AUTHORIZATION, CONTENT_TYPE, USER_AGENT},
+	Client, StatusCode,
+};
+use serde_json::json;
 
 mod structs;
 
@@ -28,23 +31,36 @@ pub async fn sponsors() -> Json<Vec<structs::Sponsor>> {
   }
 }
 "#;
-	let mut headers = HashMap::new();
+	let mut headers = HeaderMap::new();
 	let authorization_header = format!("Bearer {}", token);
 	let user_agent_header = format!(
 		"mxgic1337/{}/{} (mxgic1337.xyz)",
 		env!("CARGO_PKG_NAME"),
 		env!("CARGO_PKG_VERSION")
 	);
-	headers.insert("Authorization", authorization_header.as_str());
-	headers.insert("User-Agent", user_agent_header.as_str());
-	let client = Client::new_with_headers(endpoint, headers);
-	let response = client.query::<structs::SponsorData>(query).await;
-	let error = response.as_ref().err();
-	if error.is_some() {
-		println!("Failed to fetch sponsors: {}", error.unwrap());
+	headers.insert(AUTHORIZATION, authorization_header.parse().unwrap());
+	headers.insert(CONTENT_TYPE, "application/json".parse().unwrap());
+	headers.insert(USER_AGENT, user_agent_header.parse().unwrap());
+	let client = Client::new();
+	let response = client
+		.post(endpoint)
+		.headers(headers)
+		.body(json!({"query": query}).to_string())
+		.send()
+		.await
+		.unwrap();
+	if response.status() != StatusCode::OK {
+		println!(
+			"Failed to fetch sponsors: {}",
+			response.text().await.unwrap()
+		);
 		return Json(vec![]);
 	}
-	let data = response.unwrap().unwrap();
+	let data: structs::SponsorData = response
+		.json::<structs::SponsorResponse>()
+		.await
+		.expect("Failed to unwrap sponsor data")
+		.data;
 	let sponsors = data.user.sponsorshipsAsMaintainer.nodes;
 	let mut sponsor_list: Vec<structs::Sponsor> = vec![];
 	for user in sponsors {
