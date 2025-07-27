@@ -7,8 +7,3 @@ Hi, I'm **mxgic1337\_**! 👋
 **Projects:**
 
 {{ projects }}
-
-**Languages:**
-
-{{ languages }}
-{{ languages_learning }}
