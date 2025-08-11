@@ -13,74 +13,53 @@
 
 body {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 100vw;
   height: 100vh;
   color: var(--text);
   background: var(--base);
 }
 
-.icon-link {
+header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  background-color: var(--crust);
+  padding: 10px 25px;
+  margin: 6px;
+  border-radius: 12px;
+  width: 70%;
+  box-sizing: border-box;
 
-  @size: 22px;
-  width: @size;
-  height: @size;
-  font-size: @size;
-  color: var(--accent);
-  padding: 6px;
-  background: var(--mantle);
-  margin: 3px;
+  a {
+    color: var(--blue);
 
-  svg {
-    width: 100%;
-    height: 100%;
+    &:hover {
+      color: var(--sapphire);
+    }
   }
 
-  text-decoration: none !important;
-  border-radius: 10px;
-  border: 1px solid var(--surface0);
-}
-
-.icon-link.clickable {
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.icon-link.clickable:hover {
-  border: 1px solid var(--accent);
-}
-
-.icon-link.clickable:active {
-  scale: 0.95;
-}
-
-select {
-  color: var(--text);
-  padding: 8px;
-  background: var(--mantle);
-  margin: 3px;
-  border-radius: 10px;
-  border: 1px solid var(--surface0);
-
-  &.theme {
-    width: 50%;
-    box-sizing: border-box;
+  img {
+    @size: 30px;
+    width: @size;
+    height: @size;
+    margin-right: 12px;
   }
-}
 
-.theme-switcher select {
-  margin: 6px 0 0 0;
-  width: 100%;
+  div {
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+      font-weight: bold;
+    }
+  }
 }
 
 main {
-  padding: 24px;
-  border-radius: 10px;
-
-  width: 65%;
+  padding: 12px;
+  width: 70%;
 
   .socials {
     display: flex;
@@ -93,10 +72,10 @@ main {
   .profile {
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
 
     img.avatar {
       @size: 100px;
-      border: 1px solid var(--surface0);
       border-radius: 50%;
       margin-right: 16px;
       width: @size;
@@ -105,57 +84,57 @@ main {
   }
 
   section {
+    background-color: var(--mantle);
+    border-radius: 18px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    padding: 16px 20px;
+
     .section-title {
       display: flex;
       font-weight: bold;
-      font-size: 1em;
+      font-size: 1.1em;
       color: var(--accent);
-
       align-items: center;
-
-      margin-top: 16px;
-
       min-width: 350px;
+      gap: 8px;
 
       .icon {
-        position: relative;
-        @size: 16px;
+        @size: 1rem;
+        margin: 0;
+        font-size: @size;
         width: @size;
         height: @size;
-        text-align: center;
-        margin-right: 0px;
-      }
-
-      hr {
-        border: none;
-        border-top: 1px solid var(--surface0);
-        height: 1px;
-        flex: 1;
-        margin-left: 6px;
+        border-radius: 8px;
       }
     }
 
     .languages {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       flex-direction: column;
+      gap: 6px;
+      margin-top: 6px;
 
       .language {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-radius: 16px;
+        padding: 6px 14px;
+        background-color: var(--crust);
 
         .learning {
           color: var(--green);
           background-color: var(--green-background);
           font-size: 0.75em;
-          padding: 2px 10px;
+          padding: 3px 11px;
           border-radius: 10px;
           margin-left: 8px;
-          border: 1px solid var(--green);
         }
 
         .time {
-          margin: 0 6px;
+          margin-left: 12px;
           opacity: 0;
           color: var(--subtext0);
         }
@@ -197,9 +176,8 @@ main {
 
       .project {
         padding: 16px 20px;
-        border: 1px solid var(--surface0);
-        background-color: var(--mantle);
-        border-radius: 12px;
+        background-color: var(--crust);
+        border-radius: 16px;
         display: flex;
         flex-direction: column;
         margin-top: 6px;
@@ -301,14 +279,70 @@ a {
 }
 
 footer {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   color: var(--subtext0);
   padding: 12px 0;
-  text-align: center;
 
   select {
     max-width: 250px;
   }
 }
+
+.icon-link,
+.section-title .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @size: 22px;
+  width: @size;
+  height: @size;
+  font-size: @size;
+  color: var(--accent);
+  padding: 6px;
+  background: var(--accent-background);
+  margin: 3px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  text-decoration: none !important;
+  border-radius: 10px;
+}
+
+.icon-link.clickable {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.icon-link.clickable:active {
+  scale: 0.95;
+}
+
+select {
+  color: var(--text);
+  padding: 8px;
+  background: var(--mantle);
+  margin: 3px;
+  border-radius: 10px;
+  border: 1px solid var(--surface0);
+
+  &.theme {
+    width: 50%;
+    box-sizing: border-box;
+  }
+}
+
+.theme-switcher select {
+  width: 100%;
+}
+
+
 
 @keyframes repo-in {
   0% {
@@ -382,4 +416,10 @@ footer {
 .comment {
   font-style: italic;
   color: var(--subtext0);
+  margin-top: 2px;
+  font-size: .95rem;
+
+  &::before {
+    content: '// '
+  }
 }

@@ -14,6 +14,8 @@ whiskers:
   --accent-background: fade(@accent, 10%);
   --accent-hover: darken(@accent, 5%);
   --yellow: #{{yellow.hex}};
+  --blue: #{{blue.hex}};
+  --sapphire: #{{sapphire.hex}};
   --green: @green;
   --green-background: fade(@green, 10%);
   @surface0: #{{surface0.hex}};

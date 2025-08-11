@@ -1,8 +1,7 @@
 <section>
-  <div class="section-title">
-    <p><span class="icon"></span> Languages</p>
-    <hr>
-  </div>
+  <p class="section-title">
+    <span class="icon"></span> Languages
+  </p>
   <div class="languages">
     {% for language in languages %}
     <div class="language" data-language="{{ language.name | lower }}">
@@ -10,7 +9,7 @@
         <span class="icon">
           <script>addIconCharacter('{{ language.name | lower }}')</script>
         </span> {{ language.name }}{% if language.learning %}<span class="learning">Learning</span>{% endif %}<span
-          class="time">(...)</span>
+          class="time"> • ...</span>
       </p>
       {% if language.tools %}
       <div style="display: flex;">
