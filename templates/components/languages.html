@@ -8,18 +8,21 @@
       <p>
         <span class="icon">
           <script>addIconCharacter('{{ language.name | lower }}')</script>
-        </span> {{ language.name }}{% if language.learning %}<span class="learning">Learning</span>{% endif %}<span
+        </span> {{ language.name }}<span
           class="time"> • ...</span>
       </p>
-      {% if language.tools %}
       <div style="display: flex;">
-        {% for tool in language.tools %}
-        <a class="icon-link" target="_blank">
-          <script>addIconCharacter('{{ tool | lower }}')</script>
-        </a>
-        {% endfor %}
+        {% if language.tools %}
+          {% for tool in language.tools %}
+          <a class="icon-link" target="_blank">
+            <script>addIconCharacter('{{ tool | lower }}')</script>
+          </a>
+          {% endfor %}
+        {% endif %}
+        {% if language.learning %}
+           <a class="icon-link learning" target="_blank" title="Learning"></a>
+        {% endif %}
       </div>
-      {% endif %}
     </div>
     {% endfor %}
 </section>
