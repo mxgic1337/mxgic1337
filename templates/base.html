@@ -12,18 +12,7 @@
 </head>
 
 <body>
-  <header>
-    <div>
-      <img src="/static/favicon.png" />
-      mxgic1337.xyz
-    </div>
-    <div>
-      <p>
-        <a href="/">Home</a> &bullet;
-        <a href="/projects">Projects</a>
-      </p>
-    </div>
-  </header>
+  {% include "components/header.html" %}
   <main>
     {% block content %}{% endblock content %}
   </main>
