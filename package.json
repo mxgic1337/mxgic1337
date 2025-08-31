@@ -12,9 +12,9 @@
   "devDependencies": {
     "@types/less": "^3.0.8",
     "@types/node": "^24.3.0",
-    "less": "^4.4.0",
+    "less": "^4.4.1",
     "prettier": "^3.6.2",
-    "tsx": "^4.20.4",
+    "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   }
 }
