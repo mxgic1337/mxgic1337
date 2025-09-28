@@ -1,11 +1,8 @@
 <section>
-  <div class="section-title">
-    <p>
-      <span class="icon"></span> Projects
-    </p>
-    <hr />
-  </div>
-  <p class="comment">// Stuff that I work on in my free time</p>
+  <p class="section-title">
+    <span class="icon"></span> Projects
+  </p>
+  <p class="comment">Stuff that I work on in my free time</p>
   <div class="projects">
     {% for project in projects %}
     <div class="project">
@@ -36,7 +33,6 @@
             {% endfor %}
           {% endif %}
         </div>
-        {% if project.badge %}<img alt="WakaTime Badge" class="wakatime-badge" src="{{ project.badge }}?style=flat-square&color=eba0ac" />{% endif %}
       </div>
     </div>
     {% endfor %}
