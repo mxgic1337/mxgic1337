@@ -11,10 +11,10 @@
   },
   "devDependencies": {
     "@types/less": "^3.0.8",
-    "@types/node": "^24.6.0",
-    "less": "^4.4.1",
+    "@types/node": "^24.7.0",
+    "less": "^4.4.2",
     "prettier": "^3.6.2",
     "tsx": "^4.20.6",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   }
 }
