@@ -13,8 +13,8 @@
     "@types/less": "^3.0.8",
     "@types/node": "^24.10.1",
     "less": "^4.4.2",
-    "prettier": "^3.6.2",
-    "tsx": "^4.20.6",
+    "prettier": "^3.7.4",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
 }
