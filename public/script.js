@@ -85,7 +85,7 @@ window.addEventListener('DOMContentLoaded', () => {
         );
         if (!languageStats) continue;
         languageDiv.getElementsByClassName('time')[0].textContent =
-          `(${languageStats.text})`;
+          ` • ${languageStats.text}`;
       }
     }
   });
