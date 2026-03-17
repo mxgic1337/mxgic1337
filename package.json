@@ -11,8 +11,8 @@
   },
   "devDependencies": {
     "@types/less": "^3.0.8",
-    "@types/node": "^25.3.3",
-    "less": "^4.5.1",
+    "@types/node": "^25.5.0",
+    "less": "^4.6.4",
     "prettier": "^3.8.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
