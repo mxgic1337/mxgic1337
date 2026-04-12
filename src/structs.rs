@@ -32,6 +32,7 @@ pub struct Project {
 	languages: Vec<String>,
 	#[serde(rename = "type")]
 	project_type: String,
+	pinned: bool,
 	urls: Vec<ProjectUrl>,
 	badge: Option<String>,
 }

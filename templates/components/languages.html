@@ -1,26 +1,30 @@
 <section>
-  <div class="section-title">
-    <p><span class="icon"></span> Languages</p>
-    <hr>
-  </div>
-  <div class="languages">
-    {% for language in languages %}
-    <div class="language" data-language="{{ language.name | lower }}">
+  <p class="section-title">
+    <span class="icon"></span> Skills
+  </p>
+  <div class="skills">
+    {% for skill in skills %}
+    <div class="skill" data-skill="{{ skill.name | lower }}">
+      <div>
       <p>
         <span class="icon">
-          <script>addIconCharacter('{{ language.name | lower }}')</script>
-        </span> {{ language.name }}{% if language.learning %}<span class="learning">Learning</span>{% endif %}<span
-          class="time">(...)</span>
+          <script>addIconCharacter('{{ skill.name | lower }}')</script>
+        </span> {{ skill.name }}
       </p>
-      {% if language.tools %}
-      <div style="display: flex;">
-        {% for tool in language.tools %}
-        <a class="icon-link" target="_blank">
-          <script>addIconCharacter('{{ tool | lower }}')</script>
-        </a>
-        {% endfor %}
+      <p class="time"> ...</p>
+      </div> 
+      <div style="display: flex;" class="tools">
+        {% if skill.tools %}
+          {% for tool in skill.tools %}
+          <a class="icon-link" target="_blank" data-tool="{{ tool | lower }}">
+            <script>addIconCharacter('{{ tool | lower }}')</script>
+          </a>
+          {% endfor %}
+        {% endif %}
+        {% if skill.learning %}
+           <a class="icon-link learning" target="_blank" title="Learning"></a>
+        {% endif %}
       </div>
-      {% endif %}
     </div>
     {% endfor %}
 </section>
