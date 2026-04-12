@@ -5,7 +5,7 @@
   {% if all_projects == false %}<p class="comment">Stuff that I work on in my free time</p>{% endif %}
   <div class="projects">
     {% for project in projects %}
-    {% if all_projects == false or project.pinned == true %}
+    {% if project.pinned == true %}
     <div class="project">
       <div>
         <p class="title">

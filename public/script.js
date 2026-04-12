@@ -9,6 +9,7 @@ const ICONS = [
   { id: 'css', name: 'CSS', icon: '' },
   { id: 'html', name: 'HTML', icon: '' },
   { id: 'rust', name: 'Rust', icon: '' },
+  { id: 'webpack', name: 'Webpack', icon: '' },
   { id: 'website', name: 'Website', icon: '' },
 ];
 
