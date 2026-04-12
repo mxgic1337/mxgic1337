@@ -33,7 +33,7 @@ function addIconCharacter(id) {
  * Theme switcher
  */
 
-let currentTheme = 'mocha';
+let currentTheme = 'dark';
 
 function setTheme(theme) {
   currentTheme = theme;
@@ -74,18 +74,28 @@ window.addEventListener('DOMContentLoaded', () => {
   ).then(async (response) => {
     if (response.ok) {
       const stats = (await response.json()).data;
-      const languagesDiv = document.getElementsByClassName('languages')[0];
-      for (const languageDiv of languagesDiv.getElementsByClassName(
-        'language'
-      )) {
-        const languageStats = stats.find(
-          (language) =>
-            language.name.toLowerCase() ===
-            languageDiv.getAttribute('data-language')
+      const skillsDiv = document.getElementsByClassName('skills')[0];
+      for (const skillDiv of skillsDiv.getElementsByClassName('skill')) {
+        let timeSum = 0;
+        const skillStats = stats.find(
+          (skill) =>
+            skill.name.toLowerCase() === skillDiv.getAttribute('data-skill')
         );
-        if (!languageStats) continue;
-        languageDiv.getElementsByClassName('time')[0].textContent =
-          ` • ${languageStats.text}`;
+        if (!skillStats) continue;
+        timeSum += skillStats.total_seconds;
+        const toolsDiv = skillDiv.getElementsByClassName('tools')[0];
+        for (const toolDiv of toolsDiv.getElementsByClassName('icon-link')) {
+          const toolStats = stats.find(
+            (tool) =>
+              tool.name.toLowerCase() === toolDiv.getAttribute('data-tool')
+          );
+          if (!toolStats) continue;
+          timeSum += toolStats.total_seconds;
+        }
+        const hours = Math.floor(timeSum / 60 / 60);
+        const minutes = Math.floor((timeSum / 60) % 60);
+        skillDiv.getElementsByClassName('time')[0].textContent =
+          ` ${hours} hrs ${minutes} mins`;
       }
     }
   });

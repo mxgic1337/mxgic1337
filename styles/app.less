@@ -3,6 +3,8 @@
 @import 'flavors/macchiato';
 @import 'flavors/frappe';
 @import 'flavors/latte';
+@import 'flavors/dark';
+@import 'flavors/dark_red';
 
 * {
   padding: 0;
@@ -108,19 +110,19 @@ main {
       }
     }
 
-    .languages {
+    .skills {
       display: grid;
       grid-template-columns: 1fr 1fr;
       flex-direction: column;
       gap: 6px;
       margin-top: 6px;
 
-      .language {
+      .skill {
         display: flex;
         justify-content: space-between;
         align-items: center;
         border-radius: 16px;
-        padding: 6px 14px;
+        padding: 12px 16px;
         background-color: var(--crust);
 
         .learning {
@@ -130,13 +132,7 @@ main {
         }
 
         .time {
-          margin-left: 12px;
-          opacity: 0;
           color: var(--subtext0);
-        }
-
-        &:hover .time {
-          opacity: 0.5;
         }
 
         p {
@@ -152,8 +148,6 @@ main {
             margin-right: 4px;
           }
         }
-
-        height: 42px;
 
         .icon-link {
           @size: 18px;
@@ -171,7 +165,7 @@ main {
       grid-row-gap: 0;
 
       .project {
-        padding: 16px 20px;
+        padding: 16px 16px;
         background-color: var(--crust);
         border-radius: 16px;
         display: flex;
@@ -242,7 +236,6 @@ main {
         }
 
         transition: 0.2s;
-        animation: 0.5s repo-in;
       }
     }
   }
@@ -338,8 +331,6 @@ select {
   width: 100%;
 }
 
-
-
 @keyframes repo-in {
   0% {
     translate: 0 -10%;
@@ -358,7 +349,7 @@ select {
   }
 
   50% {
-    background-color: var(--surface2-background);
+    background-color: var(--surface1-background);
   }
 
   100% {
@@ -376,7 +367,7 @@ select {
     @size: 48px;
     width: @size;
     height: @size;
-    border: 1px solid var(--accent);
+    border: 2px solid var(--accent);
     border-radius: 50%;
     margin: 3px;
     transition: 0.2s;
@@ -413,9 +404,9 @@ select {
   font-style: italic;
   color: var(--subtext0);
   margin-top: 2px;
-  font-size: .95rem;
+  font-size: 0.95rem;
 
   &::before {
-    content: '// '
+    content: '// ';
   }
 }
