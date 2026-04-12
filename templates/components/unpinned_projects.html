@@ -1,13 +1,19 @@
 <section>
   <p class="section-title">
-  {% if all_projects == true %}<span class="icon"></span> Pinned Projects{%else%}<span class="icon"></span> Projects{%endif%}
+    <span class="icon"></span>
+    Other Projects
   </p>
-  {% if all_projects == false %}<p class="comment">Stuff that I work on in my free time</p>{% endif %}
-  <div class="projects">
+  <div class="projects unpinned">
     {% for project in projects %}
-    {% if all_projects == false or project.pinned == true %}
+    {% if project.pinned == false %}
     <div class="project">
       <div>
+        {% if project.type == "closed" %} 
+        <p class="title">
+          <span class="icon"></span>
+          <span class="name">{{ project.name }}</span>
+        </p>
+        {% else %}
         <p class="title">
           <span class="icon"></span>
           <span onclick="window.open(`https://github.com/{{ project.author }}/{{ project.name }}`);" class="full-name">
@@ -16,6 +22,7 @@
             <span class="name">{{ project.name }}</span>
           </span>
         </p>
+        {% endif %}
         <p class="description">{{ project.description }}</p>
       </div>
       <div class="badges">
@@ -26,12 +33,12 @@
           </a>
           {% endfor %}
           {% if project.urls | length > 0 %}
-            <hr />
-            {% for url in project.urls %}
-            <a class="icon-link" href="{{ url.url }}" title="{{ url.text }}" target="_blank">
-              <script>addIconCharacter('website')</script>
-            </a>
-            {% endfor %}
+          <hr />
+          {% for url in project.urls %}
+          <a class="icon-link" href="{{ url.url }}" title="{{ url.text }}" target="_blank">
+            <script>addIconCharacter('website')</script>
+          </a>
+          {% endfor %}
           {% endif %}
         </div>
       </div>
@@ -39,5 +46,4 @@
     {% endif %}
     {% endfor %}
   </div>
-  {% if all_projects == false %}<p class="link-small"><a href="/projects">  All projects</a></p>{% endif %}
 </section>

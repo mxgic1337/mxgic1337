@@ -1,5 +1,5 @@
 [
-  { "name": "TypeScript", "tools": ["React", "Vite", "JavaScript"] },
+  { "name": "JavaScript", "tools": ["React", "Vite", "TypeScript"] },
   { "name": "CSS", "tools": ["Less", "Sass"] },
   { "name": "HTML" },
   { "name": "Rust", "learning": true }

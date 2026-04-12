@@ -65,6 +65,7 @@ async fn index(State(state): State<structs::AppState>) -> impl IntoResponse {
 	context.insert("title", "mxgic1337.xyz");
 	context.insert("skills", &*state.languages);
 	context.insert("projects", &*state.projects);
+	context.insert("all_projects", &false);
 
 	Html(
 		state
@@ -79,6 +80,7 @@ async fn projects_route(State(state): State<structs::AppState>) -> impl IntoResp
 	context.insert("title", "mxgic1337.xyz");
 	context.insert("skills", &*state.languages);
 	context.insert("projects", &*state.projects);
+	context.insert("all_projects", &true);
 
 	Html(
 		state

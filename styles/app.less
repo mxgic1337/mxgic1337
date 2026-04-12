@@ -164,6 +164,11 @@ main {
       grid-column-gap: 6px;
       grid-row-gap: 0;
 
+      &.unpinned {
+        display: flex;
+        flex-direction: column;
+      }
+
       .project {
         padding: 16px 16px;
         background-color: var(--crust);
@@ -408,5 +413,13 @@ select {
 
   &::before {
     content: '// ';
+  }
+}
+
+.link-small {
+  margin-top: 8px;
+
+  a {
+    font-size: 0.95rem;
   }
 }
