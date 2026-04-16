@@ -3,6 +3,8 @@
 @import 'flavors/macchiato';
 @import 'flavors/frappe';
 @import 'flavors/latte';
+@import 'flavors/dark';
+@import 'flavors/dark_red';
 
 * {
   padding: 0;
@@ -13,74 +15,53 @@
 
 body {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 100vw;
   height: 100vh;
   color: var(--text);
   background: var(--base);
 }
 
-.icon-link {
+header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  padding: 10px 0;
+  margin: 6px;
+  border-radius: 12px;
+  width: 70%;
+  box-sizing: border-box;
 
-  @size: 22px;
-  width: @size;
-  height: @size;
-  font-size: @size;
-  color: var(--accent);
-  padding: 6px;
-  background: var(--mantle);
-  margin: 3px;
+  a {
+    color: var(--blue);
 
-  svg {
-    width: 100%;
-    height: 100%;
+    &:hover {
+      color: var(--sapphire);
+    }
   }
 
-  text-decoration: none !important;
-  border-radius: 10px;
-  border: 1px solid var(--surface0);
-}
-
-.icon-link.clickable {
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.icon-link.clickable:hover {
-  border: 1px solid var(--accent);
-}
-
-.icon-link.clickable:active {
-  scale: 0.95;
-}
-
-select {
-  color: var(--text);
-  padding: 8px;
-  background: var(--mantle);
-  margin: 3px;
-  border-radius: 10px;
-  border: 1px solid var(--surface0);
-
-  &.theme {
-    width: 50%;
-    box-sizing: border-box;
+  img {
+    @size: 30px;
+    width: @size;
+    height: @size;
+    margin-right: 12px;
   }
-}
 
-.theme-switcher select {
-  margin: 6px 0 0 0;
-  width: 100%;
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    font-weight: bold;
+    cursor: pointer;
+  }
 }
 
 main {
-  padding: 24px;
-  border-radius: 10px;
-
-  width: 65%;
+  padding: 12px;
+  width: 70%;
 
   .socials {
     display: flex;
@@ -93,10 +74,10 @@ main {
   .profile {
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
 
     img.avatar {
       @size: 100px;
-      border: 1px solid var(--surface0);
       border-radius: 50%;
       margin-right: 16px;
       width: @size;
@@ -105,63 +86,54 @@ main {
   }
 
   section {
+    background-color: var(--mantle);
+    border-radius: 18px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    padding: 16px 20px;
+
     .section-title {
       display: flex;
       font-weight: bold;
-      font-size: 1em;
+      font-size: 1.1em;
       color: var(--accent);
-
       align-items: center;
-
-      margin-top: 16px;
-
       min-width: 350px;
+      gap: 8px;
 
       .icon {
-        position: relative;
-        @size: 16px;
+        @size: 1rem;
+        margin: 0;
+        font-size: @size;
         width: @size;
         height: @size;
-        text-align: center;
-        margin-right: 0px;
-      }
-
-      hr {
-        border: none;
-        border-top: 1px solid var(--surface0);
-        height: 1px;
-        flex: 1;
-        margin-left: 6px;
+        border-radius: 8px;
       }
     }
 
-    .languages {
-      display: flex;
+    .skills {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       flex-direction: column;
+      gap: 6px;
+      margin-top: 6px;
 
-      .language {
+      .skill {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-radius: 16px;
+        padding: 12px 16px;
+        background-color: var(--crust);
 
         .learning {
           color: var(--green);
           background-color: var(--green-background);
-          font-size: 0.75em;
-          padding: 2px 10px;
-          border-radius: 10px;
-          margin-left: 8px;
-          border: 1px solid var(--green);
+          font-size: 0.9em;
         }
 
         .time {
-          margin: 0 6px;
-          opacity: 0;
           color: var(--subtext0);
-        }
-
-        &:hover .time {
-          opacity: 0.5;
         }
 
         p {
@@ -178,8 +150,6 @@ main {
           }
         }
 
-        height: 42px;
-
         .icon-link {
           @size: 18px;
           width: @size;
@@ -195,11 +165,15 @@ main {
       grid-column-gap: 6px;
       grid-row-gap: 0;
 
+      &.unpinned {
+        display: flex;
+        flex-direction: column;
+      }
+
       .project {
-        padding: 16px 20px;
-        border: 1px solid var(--surface0);
-        background-color: var(--mantle);
-        border-radius: 12px;
+        padding: 16px 16px;
+        background-color: var(--crust);
+        border-radius: 16px;
         display: flex;
         flex-direction: column;
         margin-top: 6px;
@@ -268,7 +242,6 @@ main {
         }
 
         transition: 0.2s;
-        animation: 0.5s repo-in;
       }
     }
   }
@@ -301,13 +274,67 @@ a {
 }
 
 footer {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   color: var(--subtext0);
   padding: 12px 0;
-  text-align: center;
 
   select {
     max-width: 250px;
   }
+}
+
+.icon-link,
+.section-title .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @size: 22px;
+  width: @size;
+  height: @size;
+  font-size: @size;
+  color: var(--accent);
+  padding: 6px;
+  background: var(--accent-background);
+  margin: 3px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  text-decoration: none !important;
+  border-radius: 10px;
+}
+
+.icon-link.clickable {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.icon-link.clickable:active {
+  scale: 0.95;
+}
+
+select {
+  color: var(--text);
+  padding: 8px;
+  background: var(--mantle);
+  margin: 3px;
+  border-radius: 10px;
+  border: none;
+
+  &.theme {
+    width: 50%;
+    box-sizing: border-box;
+  }
+}
+
+.theme-switcher select {
+  width: 100%;
 }
 
 @keyframes repo-in {
@@ -328,7 +355,7 @@ footer {
   }
 
   50% {
-    background-color: var(--surface2-background);
+    background-color: var(--surface1-background);
   }
 
   100% {
@@ -346,7 +373,7 @@ footer {
     @size: 48px;
     width: @size;
     height: @size;
-    border: 1px solid var(--accent);
+    border: 2px solid var(--accent);
     border-radius: 50%;
     margin: 3px;
     transition: 0.2s;
@@ -382,4 +409,18 @@ footer {
 .comment {
   font-style: italic;
   color: var(--subtext0);
+  margin-top: 2px;
+  font-size: 0.95rem;
+
+  &::before {
+    content: '// ';
+  }
+}
+
+.link-small {
+  margin-top: 8px;
+
+  a {
+    font-size: 0.95rem;
+  }
 }
