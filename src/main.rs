@@ -43,6 +43,7 @@ async fn main() {
 	};
 	let app = Router::new()
 		.route("/", get(index))
+		.route("/projects", get(projects_route))
 		.route(
 			"/app.css",
 			get((
@@ -62,13 +63,29 @@ async fn main() {
 async fn index(State(state): State<structs::AppState>) -> impl IntoResponse {
 	let mut context = Context::new();
 	context.insert("title", "mxgic1337.xyz");
+	context.insert("skills", &*state.languages);
 	context.insert("projects", &*state.projects);
-	context.insert("languages", &*state.languages);
+	context.insert("all_projects", &false);
 
 	Html(
 		state
 			.tera
 			.render("index.html", &context)
+			.expect("failed to render template"),
+	)
+}
+
+async fn projects_route(State(state): State<structs::AppState>) -> impl IntoResponse {
+	let mut context = Context::new();
+	context.insert("title", "mxgic1337.xyz");
+	context.insert("skills", &*state.languages);
+	context.insert("projects", &*state.projects);
+	context.insert("all_projects", &true);
+
+	Html(
+		state
+			.tera
+			.render("projects.html", &context)
 			.expect("failed to render template"),
 	)
 }
