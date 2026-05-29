@@ -171,7 +171,7 @@ main {
       }
 
       .project {
-        padding: 16px 16px;
+        padding: 14px 14px;
         background-color: var(--crust);
         border-radius: 16px;
         display: flex;
@@ -179,6 +179,15 @@ main {
         margin-top: 6px;
         font-size: 0.95em;
         justify-content: space-between;
+        border: 2px solid #0000;
+
+        &:hover {
+          transform: translateY(-3px);
+          border: 2px solid var(--accent-hover);
+          box-shadow: 0 0 12px color-mix(in srgb, var(--mantle) 80%, transparent 20%);
+        }
+
+        transition: 0.2s;
 
         .title {
           display: flex;
@@ -186,14 +195,23 @@ main {
 
           .icon {
             position: relative;
+            font-size: 1rem;
             top: -2px;
             width: 1em;
             height: 1em;
             color: var(--text);
-            margin-right: 4px;
+            margin-right: 6px;
           }
 
           color: var(--accent);
+
+          .full-name {
+            font-size: 0;
+
+            span {
+              font-size: 1rem;
+            }
+          }
 
           .name {
             font-weight: bold;
@@ -240,8 +258,6 @@ main {
           color: var(--accent-hover);
           cursor: pointer;
         }
-
-        transition: 0.2s;
       }
     }
   }
@@ -394,7 +410,7 @@ select {
       align-items: center;
       justify-content: center;
       color: var(--surface0);
-      border: 1px dashed var(--surface0);
+      border: 2px dashed var(--surface0);
       background-color: transparent;
 
       &:hover {
