@@ -96,7 +96,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const hours = Math.floor(timeSum / 60 / 60);
         const minutes = Math.floor((timeSum / 60) % 60);
         skillDiv.getElementsByClassName('time')[0].textContent =
-          ` ${hours} hrs ${minutes} mins`;
+          `${hours} hrs ${minutes} mins`;
       }
     }
   });

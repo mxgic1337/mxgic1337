@@ -5,7 +5,7 @@ whiskers:
     - flavor
   filename: 'styles/flavors/{{flavor.identifier}}.less'
 ---
-.{{flavor.identifier}} {
+.ctp-{{flavor.identifier}} {
   @green: #{{green.hex}};
   @accent: #{{maroon.hex}};
   --text: #{{text.hex}};

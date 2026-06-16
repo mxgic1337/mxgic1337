@@ -9,7 +9,7 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: 'FiraCodeNF', sans-serif;
+  font-family: 'Outfit', sans-serif;
   user-select: none;
 }
 
@@ -83,6 +83,12 @@ main {
       width: @size;
       height: @size;
     }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
   }
 
   section {
@@ -99,7 +105,7 @@ main {
       color: var(--accent);
       align-items: center;
       min-width: 350px;
-      gap: 8px;
+      gap: 6px;
 
       .icon {
         @size: 1rem;
@@ -143,10 +149,9 @@ main {
           .icon {
             color: var(--accent);
             position: relative;
-            top: -1px;
             font-size: 1.25em;
             width: 18px;
-            margin-right: 4px;
+            margin-right: 3px;
           }
         }
 
@@ -200,6 +205,7 @@ main {
             width: 1em;
             height: 1em;
             color: var(--text);
+            text-align: center;
             margin-right: 6px;
           }
 
@@ -395,9 +401,11 @@ select {
     transition: 0.2s;
     cursor: pointer;
     background-color: var(--accent-background);
+    font-family: 'FiraCodeNF', sans-serif;
 
     &:hover {
       border-color: var(--accent-hover);
+      transform: translateY(-2px);
     }
 
     &.loading {
@@ -427,6 +435,8 @@ select {
   color: var(--subtext0);
   margin-top: 2px;
   font-size: 0.95rem;
+  font-family: 'FiraCodeNF', sans-serif;
+
 
   &::before {
     content: '// ';
@@ -439,4 +449,9 @@ select {
   a {
     font-size: 0.95rem;
   }
+}
+
+.icon,
+.icon-link {
+  font-family: 'FiraCodeNF', sans-serif;
 }
