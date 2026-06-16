@@ -39,7 +39,7 @@ let currentTheme = 'dark';
 function setTheme(theme) {
   currentTheme = theme;
   document.getElementsByTagName('html')[0].className = theme;
-  localStorage.setItem('flavor', theme);
+  localStorage.setItem('theme', theme);
   const wakaTimeBadges = document.getElementsByClassName('wakatime-badge');
   const accentColor = window
     .getComputedStyle(document.body)
@@ -62,7 +62,7 @@ function escapeHTML(text) {
 
 window.addEventListener('DOMContentLoaded', () => {
   const switcher = document.getElementById('theme-switcher');
-  const defaultTheme = localStorage.getItem('flavor') || 'mocha';
+  const defaultTheme = localStorage.getItem('theme') || 'dark';
   switcher.addEventListener('change', (e) => {
     setTheme(e.currentTarget.value);
   });
