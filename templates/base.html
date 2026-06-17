@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html class="mocha" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/app.css">
+  <meta name="theme-color" content="#eba0ac">
+  <link rel="shortcut icon" href="/static/favicon.png" type="image/png">
+  <script src="/static/script.js"></script>
+  <title>{{ title }}</title>
+</head>
+
+<body>
+  {% include "components/header.html" %}
+  <main>
+    {% block content %}{% endblock content %}
+  </main>
+  {% include "components/footer.html" %}
+</body>
+
+</html>

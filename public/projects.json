@@ -11,7 +11,7 @@
         "url": "https://catppuccin.com"
       }
     ],
-    "badge": "https://wakatime.com/badge/user/3a057790-d695-462e-aada-aa717a266ec9/project/f3a49df7-743f-4205-8074-91608ccb9d5f.svg"
+    "pinned": false
   },
   {
     "name": "faceit-stats-widget",
@@ -25,7 +25,7 @@
         "url": "https://widget.mxgic1337.xyz/"
       }
     ],
-    "badge": "https://wakatime.com/badge/user/3a057790-d695-462e-aada-aa717a266ec9/project/45acda3c-9663-4f18-9cc5-abbf7ebceb29.svg"
+    "pinned": true
   },
   {
     "name": "jellyfin",
@@ -39,7 +39,7 @@
         "url": "https://catppuccin.com"
       }
     ],
-    "badge": "https://wakatime.com/badge/user/3a057790-d695-462e-aada-aa717a266ec9/project/a11f25b2-c1fc-4d67-8948-6bd115946a6c.svg"
+    "pinned": false
   },
   {
     "name": "mxgic1337",
@@ -48,6 +48,43 @@
     "languages": ["rust", "html", "less", "javascript"],
     "type": "github",
     "urls": [],
-    "badge": "https://wakatime.com/badge/user/3a057790-d695-462e-aada-aa717a266ec9/project/311c570a-3e0d-4c23-a9c3-a80b7b7d5c53.svg"
+    "pinned": true
+  },
+  {
+    "name": "protonfox",
+    "author": "mxgic1337",
+    "description": "Extension that displays information about game compatibility with Proton on Steam.",
+    "languages": ["typescript", "webpack", "less"],
+    "type": "github",
+    "urls": [],
+    "pinned": false
+  },
+  {
+    "name": "tazowsky.xyz",
+    "author": "mxgic1337",
+    "description": "A personal website for Tazowskyyy.",
+    "languages": ["html", "css"],
+    "type": "closed",
+    "urls": [
+      {
+        "text": "Website",
+        "url": "https://tazowsky.xyz"
+      }
+    ],
+    "pinned": false
+  },
+  {
+    "name": "jezus1337.pl",
+    "author": "mxgic1337",
+    "description": "A personal website for JEZUS_1337.",
+    "languages": ["html", "css"],
+    "type": "closed",
+    "urls": [
+      {
+        "text": "Website",
+        "url": "https://jezus1337.pl"
+      }
+    ],
+    "pinned": false
   }
 ]
