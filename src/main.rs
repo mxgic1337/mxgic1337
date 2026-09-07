@@ -23,13 +23,8 @@ fn read_json<T: DeserializeOwned>(path: &str) -> Result<T, Box<dyn Error>> {
 #[tokio::main]
 async fn main() {
 	dotenv().ok();
-	let tera = match Tera::new("templates/**/*.html") {
-		Ok(t) => t,
-		Err(e) => {
-			println!("Failed to initialize Tera: {}", e);
-			std::process::exit(1);
-		}
-	};
+	let mut tera = Tera::default();
+	let _ = tera.load_from_glob("templates/**/*.html");
 
 	let projects = read_json::<Vec<structs::Project>>("public/projects.json")
 		.expect("failed to read projects from json");
