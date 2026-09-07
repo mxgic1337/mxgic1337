@@ -86,5 +86,19 @@
       }
     ],
     "pinned": false
+  },
+  {
+    "name": "slodkijoe.pl",
+    "author": "mxgic1337",
+    "description": "A personal website for Slodki_joe.",
+    "languages": ["html", "css", "javascript"],
+    "type": "closed",
+    "urls": [
+      {
+        "text": "Website",
+        "url": "https://slodkijoe.pl"
+      }
+    ],
+    "pinned": false
   }
 ]
