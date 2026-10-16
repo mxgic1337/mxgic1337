@@ -1,30 +1,26 @@
-MIT License
+This repository is made up of parts under different licenses:
 
-Copyright (c) 2025 mxgic1337_
+Source Code (everything except the items below):
+MIT License, Copyright (c) 2024-2026 mxgic1337_
+See the licenses/LICENSE-MIT file.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Page content (located in "templates/") is licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
+Copyright (c) 2024-2026 mxgic1337_
+https://creativecommons.org/licenses/by/4.0/
+See the licenses/LICENSE-CC file.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+The Catppuccin theme (located in "catppuccin.tera") is licensed under the
+MIT License.
+https://github.com/catppuccin/catppuccin/blob/main/LICENSE
+See the licenses/LICENSE-CTP file.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+The "FiraCode Nerd Font" font (located in "public/") is a patched version of Fira Code and is licensed under the
+SIL Open Font License 1.1 (OFL-1.1).
 
----
+Fira Code:
+See the licenses/LICENSE-FIRA-CODE file.
 
-The "FiraCode Nerd Font" font (located in "public/") is licensed under the
-SIL Open Font License 1.1
-OFL-1.1
+Nerd Fonts patches:
 https://github.com/ryanoasis/nerd-fonts/blob/master/LICENSE
-
 Copyright (c) 2014, Ryan L McIntyre (https://ryanlmcintyre.com).
+See the licenses/LICENSE-NERD-FONTS file.
