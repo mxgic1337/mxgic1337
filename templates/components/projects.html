@@ -1,7 +1,7 @@
 <section>
-  <p class="section-title">
+  <h2 class="section-title">
   {% if all_projects == true %}<span class="icon"></span> Pinned Projects{%else%}<span class="icon"></span> Projects{%endif%}
-  </p>
+  </h2>
   {% if all_projects == false %}<p class="comment">Stuff that I work on in my free time</p>{% endif %}
   <div class="projects">
     {% for project in projects %}

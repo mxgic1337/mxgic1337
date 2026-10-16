@@ -1,14 +1,14 @@
 <section>
-  <p class="section-title">
+  <h2 class="section-title">
     <span class="icon"></span>
     Other Projects
-  </p>
+  </h2>
   <div class="projects unpinned">
     {% for project in projects %}
     {% if project.pinned == false %}
     <div class="project">
       <div>
-        {% if project.type == "closed" %} 
+        {% if project.type == "closed" %}
         <p class="title">
           <span class="icon"></span>
           <span class="name">{{ project.name }}</span>
